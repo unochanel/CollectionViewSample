@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    var tagList = ["タグ作成", "😝眠い", "🍖食事", "😝残業", "😝仕事", "😝７文字のタグだ", "😝睡眠", "😝勉強", "😝７文字のタグだ", "😝８文字のタグです",  "😝８文字のタグです", "😝７文字のタグだ", "😝９文字はいるタグだ", "😝９文字はいるタグだ", "😝１０文字の場合は1個", "😝6文字の場合は", "😝仕事", "😝７文字のタグだ", "😝眠い", "🍖食事", "😝残業", "😝仕事", "😝iiii"]
-    
+final class ViewController: UIViewController {
+    var tagList: [String] = []
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tagList.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         cell.configureCell(item: tagList[indexPath.row])

@@ -8,9 +8,14 @@
 
 import UIKit
 
+enum CellType: Int {
+    case positive
+    case negative
+}
+
 class Cell: UICollectionViewCell {
     static let reuseIdentifier = "Cell"
-
+    
     @IBOutlet private weak var label: UILabel!
 
     func configureCell(item: String) {
