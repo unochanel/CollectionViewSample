@@ -51,11 +51,9 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
         let label = UILabel()
-        let view = UIView()
         label.text = tagList[index]
         label.sizeToFit()
-        view.frame.size = CGSize(width: label.frame.size.width + 28, height: label.frame.size.height + 25)
-        let cellSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
+        let cellSize = CGSize(width: label.frame.size.width + 24, height: label.frame.size.height + 20)
         return cellSize
     }
 }

@@ -21,7 +21,7 @@ class Cell: UICollectionViewCell {
     private func configureLabelLayer() {
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 1
-        label.layer.cornerRadius = 5
+        label.layer.cornerRadius = 7
         label.layer.backgroundColor = UIColor.cyan.cgColor
     }
 }
