@@ -14,6 +14,8 @@
 		5C7D9CF021771E410011C9E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CEE21771E410011C9E5 /* LaunchScreen.storyboard */; };
 		5C7D9CFB21771E410011C9E5 /* SampleCollectionVIewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CFA21771E410011C9E5 /* SampleCollectionVIewTests.swift */; };
 		5C7D9D0621771E410011C9E5 /* SampleCollectionVIewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9D0521771E410011C9E5 /* SampleCollectionVIewUITests.swift */; };
+		5C7D9D1B21774C630011C9E5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9D1921774C630011C9E5 /* Cell.swift */; };
+		5C7D9D1C21774C630011C9E5 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9D1A21774C630011C9E5 /* Cell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		5C7D9D0121771E410011C9E5 /* SampleCollectionVIewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCollectionVIewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9D0521771E410011C9E5 /* SampleCollectionVIewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCollectionVIewUITests.swift; sourceTree = "<group>"; };
 		5C7D9D0721771E410011C9E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C7D9D1921774C630011C9E5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		5C7D9D1A21774C630011C9E5 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */,
 				5C7D9CE721771E3F0011C9E5 /* ViewController.swift */,
 				5C7D9CE921771E3F0011C9E5 /* Main.storyboard */,
+				5C7D9D1921774C630011C9E5 /* Cell.swift */,
+				5C7D9D1A21774C630011C9E5 /* Cell.xib */,
 				5C7D9CEC21771E410011C9E5 /* Assets.xcassets */,
 				5C7D9CEE21771E410011C9E5 /* LaunchScreen.storyboard */,
 				5C7D9CF121771E410011C9E5 /* Info.plist */,
@@ -230,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C7D9CF021771E410011C9E5 /* LaunchScreen.storyboard in Resources */,
+				5C7D9D1C21774C630011C9E5 /* Cell.xib in Resources */,
 				5C7D9CED21771E410011C9E5 /* Assets.xcassets in Resources */,
 				5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */,
 			);
@@ -258,6 +265,7 @@
 			files = (
 				5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */,
 				5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */,
+				5C7D9D1B21774C630011C9E5 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
