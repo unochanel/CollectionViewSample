@@ -14,6 +14,7 @@
 		5C7D9CF021771E410011C9E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CEE21771E410011C9E5 /* LaunchScreen.storyboard */; };
 		5C7D9CFB21771E410011C9E5 /* SampleCollectionVIewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CFA21771E410011C9E5 /* SampleCollectionVIewTests.swift */; };
 		5C7D9D0621771E410011C9E5 /* SampleCollectionVIewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9D0521771E410011C9E5 /* SampleCollectionVIewUITests.swift */; };
+		5C7D9D5A2178292C0011C9E5 /* TagCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9D592178292C0011C9E5 /* TagCellLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5C7D9D0121771E410011C9E5 /* SampleCollectionVIewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCollectionVIewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9D0521771E410011C9E5 /* SampleCollectionVIewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCollectionVIewUITests.swift; sourceTree = "<group>"; };
 		5C7D9D0721771E410011C9E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C7D9D592178292C0011C9E5 /* TagCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		5C7D9CD921771E3F0011C9E5 = {
 			isa = PBXGroup;
 			children = (
+				5C7D9D58217826E90011C9E5 /* Source */,
 				5C7D9CE421771E3F0011C9E5 /* SampleCollectionVIew */,
 				5C7D9CF921771E410011C9E5 /* SampleCollectionVIewTests */,
 				5C7D9D0421771E410011C9E5 /* SampleCollectionVIewUITests */,
@@ -123,6 +126,14 @@
 				5C7D9D0721771E410011C9E5 /* Info.plist */,
 			);
 			path = SampleCollectionVIewUITests;
+			sourceTree = "<group>";
+		};
+		5C7D9D58217826E90011C9E5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5C7D9D592178292C0011C9E5 /* TagCellLayout.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			files = (
 				5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */,
 				5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */,
+				5C7D9D5A2178292C0011C9E5 /* TagCellLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
