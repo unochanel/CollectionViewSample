@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    var tagList = ["タグ作成", "😝眠い", "🍖食事", "😝残業", "😝仕事", "😝７文字のタグだ", "😝睡眠", "😝勉強", "😝７文字のタグだ", "😝８文字のタグです",  "😝８文字のタグです", "😝７文字のタグだ", "😝９文字はいるタグだ", "😝９文字はいるタグだ", "😝１０文字の場合は1個", "😝6文字の場合は", "😝仕事", "😝７文字のタグだ", "😝眠い", "🍖食事", "😝残業", "😝仕事", "😝iiii"]
-    
+final class ViewController: UIViewController {
+    var tagList = [TagResponse.Tag]()
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 extension ViewController {
     private func configure() {
         collectionView.dataSource = self
+        getTagList()
         configureCell()
         configureCollctionView()
     }
@@ -34,13 +35,21 @@ extension ViewController {
         let tagCellLayout = TagCellLayout(delegate: self)
         collectionView?.collectionViewLayout = tagCellLayout
     }
+
+    private func getTagList() {
+        TagRequest().getTag(handler: { [weak self] tagResponse in
+            guard let weakSelf = self else { return }
+            weakSelf.tagList = tagResponse.tag
+            weakSelf.collectionView.reloadData()
+        })
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tagList.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         cell.configureCell(item: tagList[indexPath.row])
@@ -51,11 +60,9 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
         let label = UILabel()
-        let view = UIView()
-        label.text = tagList[index]
+        label.text = tagList[index].tag
         label.sizeToFit()
-        view.frame.size = CGSize(width: label.frame.size.width + 28, height: label.frame.size.height + 25)
-        let cellSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
+        let cellSize = CGSize(width: label.frame.size.width + 24, height: label.frame.size.height + 20)
         return cellSize
     }
 }

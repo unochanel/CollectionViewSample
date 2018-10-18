@@ -78,7 +78,9 @@ private extension TagCellLayout {
     var currentTagFrame: CGRect {
         guard let info = currentTagLayoutInfo?.layoutAttribute else { return .zero }
         var frame = info.frame
-        frame.origin.x += info.bounds.width
+        //ここを変更すれば、各セルの横幅の余白が作れます！
+        frame.origin.x += info.bounds.width + 12
+        
         return frame
     }
     
@@ -89,7 +91,7 @@ private extension TagCellLayout {
     }
     
     var tagsCount: Int {
-        //全てのタグ数が帰ってくる
+
         return collectionView?.numberOfItems(inSection: 0) ?? 0
     }
     
@@ -116,8 +118,7 @@ private extension TagCellLayout {
             handleWhiteSpaceForLastRow()
         }
     }
-    
-    //各CellのLayoutの大きさをindexとCGSizeで、LlayoutInfo.Listに保存している
+
     func createLayoutAttributes() {
         let tagSize = delegate!.tagCellLayoutTagSize(layout: self, atIndex: currentTagIndex)
         let layoutInfo = tagCellLayoutInfo(tagIndex: currentTagIndex, tagSize: tagSize)
@@ -139,7 +140,8 @@ private extension TagCellLayout {
 
         if shouldMoveTagToNextRow(tagWidth: tagSize.width) {
             tagFrame.origin.x = 0.0
-            tagFrame.origin.y += currentTagFrame.height
+            //ここいじれば、列ごとのセルの感覚を変更することができます
+            tagFrame.origin.y += (currentTagFrame.height + 10)
             isFirstElementInARow = true
         }
         let attribute = layoutAttribute(tagIndex: tagIndex, tagFrame: tagFrame)
@@ -207,7 +209,6 @@ private extension TagCellLayout {
         applyWhiteSpace(startingIndex: (tagsCount-1))
     }
 
-    //何度も使い回しができるようにlayoutの情報を初期化している
     func resetLayoutState() {
         layoutInfoList = Array<LayoutInfo>()
         numberOfTagsInCurrentRow = 0

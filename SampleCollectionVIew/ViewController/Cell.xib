@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecw-K2-vDS">
-                        <rect key="frame" x="6" y="5" width="119" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="131" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,10 +40,10 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Ecw-K2-vDS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="8zV-Y4-4ja"/>
-                <constraint firstAttribute="bottom" secondItem="Ecw-K2-vDS" secondAttribute="bottom" constant="5" id="eUw-EN-x9n"/>
-                <constraint firstAttribute="trailing" secondItem="Ecw-K2-vDS" secondAttribute="trailing" constant="6" id="i0e-Qb-aHd"/>
-                <constraint firstItem="Ecw-K2-vDS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="iBD-Qb-WId"/>
+                <constraint firstItem="Ecw-K2-vDS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7pe-Jj-Mtt"/>
+                <constraint firstAttribute="trailing" secondItem="Ecw-K2-vDS" secondAttribute="trailing" id="bgU-lR-WhT"/>
+                <constraint firstItem="Ecw-K2-vDS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kCk-YU-ZPW"/>
+                <constraint firstAttribute="bottom" secondItem="Ecw-K2-vDS" secondAttribute="bottom" id="wKj-JA-N7Z"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="131" height="50"/>
