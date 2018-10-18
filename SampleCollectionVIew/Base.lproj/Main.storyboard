@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="タグを設定しましょう" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KH-bD-T57">
-                                <rect key="frame" x="100" y="69" width="174" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-2L-evO">
                                 <rect key="frame" x="16" y="135" width="343" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,12 +31,41 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-1m-yKP">
+                                <rect key="frame" x="36" y="566" width="303" height="56"/>
+                                <color key="backgroundColor" red="0.44313725490196076" green="0.80392156862745101" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="YDR-9l-SpM"/>
+                                </constraints>
+                                <state key="normal" title="ボタン">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タグを設定しましょう" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KH-bD-T57">
+                                <rect key="frame" x="65" y="71" width="244" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4KH-bD-T57" secondAttribute="trailing" constant="66" id="1ba-go-AFL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gJl-1m-yKP" secondAttribute="bottom" constant="45" id="3Z1-d7-4ma"/>
                             <constraint firstItem="ycd-2L-evO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="O16-KG-lam"/>
                             <constraint firstItem="ycd-2L-evO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="Rat-8b-tHo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ycd-2L-evO" secondAttribute="bottom" id="VU7-Lr-ZK8"/>
+                            <constraint firstItem="ycd-2L-evO" firstAttribute="top" secondItem="4KH-bD-T57" secondAttribute="bottom" constant="35" id="XdT-EZ-44T"/>
+                            <constraint firstItem="gJl-1m-yKP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bar-UX-VZC"/>
+                            <constraint firstItem="gJl-1m-yKP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="fBo-C0-ilY"/>
+                            <constraint firstItem="4KH-bD-T57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="51" id="vLM-j5-FLV"/>
+                            <constraint firstItem="4KH-bD-T57" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="xV3-4O-0hG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gJl-1m-yKP" secondAttribute="trailing" constant="36" id="yFh-L6-fW4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
