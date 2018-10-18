@@ -22,6 +22,6 @@ class Cell: UICollectionViewCell {
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 5
-        label.backgroundColor = UIColor.cyan
+        label.layer.backgroundColor = UIColor.cyan.cgColor
     }
 }

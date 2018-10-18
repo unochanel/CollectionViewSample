@@ -47,9 +47,7 @@ public class TagCellLayout: UICollectionViewLayout {
     override convenience init() {
         self.init(delegate: nil)
     }
-    
-    //MARK: - Override Methods
-    
+
     override public func prepare() {
         resetLayoutState()
         setupTagCellLayout()
@@ -76,10 +74,7 @@ public class TagCellLayout: UICollectionViewLayout {
     }
 }
 
-//MARK: - Private Methods
-
 private extension TagCellLayout {
-    
     var currentTagFrame: CGRect {
         guard let info = currentTagLayoutInfo?.layoutAttribute else { return .zero }
         var frame = info.frame
@@ -94,6 +89,7 @@ private extension TagCellLayout {
     }
     
     var tagsCount: Int {
+        //全てのタグ数が帰ってくる
         return collectionView?.numberOfItems(inSection: 0) ?? 0
     }
     
@@ -121,14 +117,21 @@ private extension TagCellLayout {
         }
     }
     
+    //各CellのLayoutの大きさをindexとCGSizeで、LlayoutInfo.Listに保存している
     func createLayoutAttributes() {
-        // calculating tag-size
         let tagSize = delegate!.tagCellLayoutTagSize(layout: self, atIndex: currentTagIndex)
-        
         let layoutInfo = tagCellLayoutInfo(tagIndex: currentTagIndex, tagSize: tagSize)
         layoutInfoList.append(layoutInfo)
     }
-    
+
+    func configureWhiteSpace() {
+        let layoutInfo = layoutInfoList[currentTagIndex].layoutAttribute
+        let tagWidth = layoutInfo.frame.size.width
+        if shouldMoveTagToNextRow(tagWidth: tagWidth) {
+            applyWhiteSpace(startingIndex: (currentTagIndex - 1))
+        }
+    }
+
     func tagCellLayoutInfo(tagIndex: Int, tagSize: CGSize) -> LayoutInfo {
         var isFirstElementInARow = tagIndex == 0
         var tagFrame = currentTagFrame
@@ -154,14 +157,6 @@ private extension TagCellLayout {
         let layoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         layoutAttribute.frame = tagFrame
         return layoutAttribute
-    }
-    
-    func configureWhiteSpace() {
-        let layoutInfo = layoutInfoList[currentTagIndex].layoutAttribute
-        let tagWidth = layoutInfo.frame.size.width
-        if shouldMoveTagToNextRow(tagWidth: tagWidth) {
-            applyWhiteSpace(startingIndex: (currentTagIndex - 1))
-        }
     }
     
     func applyWhiteSpace(startingIndex: Int) {
@@ -212,6 +207,7 @@ private extension TagCellLayout {
         applyWhiteSpace(startingIndex: (tagsCount-1))
     }
 
+    //何度も使い回しができるようにlayoutの情報を初期化している
     func resetLayoutState() {
         layoutInfoList = Array<LayoutInfo>()
         numberOfTagsInCurrentRow = 0
