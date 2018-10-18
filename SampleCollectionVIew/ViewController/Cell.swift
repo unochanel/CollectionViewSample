@@ -8,9 +8,27 @@
 
 import UIKit
 
-enum CellType: Int {
+enum CellType: String {
     case positive
     case negative
+
+    func labelColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.cyan.cgColor
+        case .negative:
+            return UIColor.orange.cgColor
+        }
+    }
+
+    func borderColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.blue.cgColor
+        case .negative:
+            return UIColor.red.cgColor
+        }
+    }
 }
 
 class Cell: UICollectionViewCell {
@@ -18,15 +36,16 @@ class Cell: UICollectionViewCell {
     
     @IBOutlet private weak var label: UILabel!
 
-    func configureCell(item: String) {
-        label.text = item
-        configureLabelLayer()
+    func configureCell(item: TagResponse.Tag) {
+        label.text = item.tag
+        guard let cellType = CellType(rawValue: item.type) else { return }
+        configureLabelLayer(cellType: cellType)
     }
 
-    private func configureLabelLayer() {
-        label.layer.borderColor = UIColor.black.cgColor
+    private func configureLabelLayer(cellType: CellType) {
+        label.layer.borderColor = cellType.borderColor()
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 7
-        label.layer.backgroundColor = UIColor.cyan.cgColor
+        label.layer.backgroundColor = cellType.labelColor()
     }
 }

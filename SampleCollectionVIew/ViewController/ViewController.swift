@@ -9,7 +9,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    var tagList: [String] = []
+    var tagList = [TagResponse.Tag]()
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,6 +22,7 @@ final class ViewController: UIViewController {
 extension ViewController {
     private func configure() {
         collectionView.dataSource = self
+        getTagList()
         configureCell()
         configureCollctionView()
     }
@@ -33,6 +34,14 @@ extension ViewController {
     private func configureCollctionView() {
         let tagCellLayout = TagCellLayout(delegate: self)
         collectionView?.collectionViewLayout = tagCellLayout
+    }
+
+    private func getTagList() {
+        TagRequest().getTag(handler: { [weak self] tagResponse in
+            guard let weakSelf = self else { return }
+            weakSelf.tagList = tagResponse.tag
+            weakSelf.collectionView.reloadData()
+        })
     }
 }
 
@@ -51,7 +60,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
         let label = UILabel()
-        label.text = tagList[index]
+        label.text = tagList[index].tag
         label.sizeToFit()
         let cellSize = CGSize(width: label.frame.size.width + 24, height: label.frame.size.height + 20)
         return cellSize

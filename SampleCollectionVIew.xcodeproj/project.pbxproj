@@ -13,6 +13,7 @@
 		5C0F8B9B21787C4600BE2040 /* Tag.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C0F8B9A21787C4600BE2040 /* Tag.json */; };
 		5C0F8B9F217887B200BE2040 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8B9E217887B200BE2040 /* R.generated.swift */; };
 		5C0F8BA321788A4000BE2040 /* TagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BA221788A4000BE2040 /* TagResponse.swift */; };
+		5C0F8BA921788F8200BE2040 /* TagRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BA821788F8200BE2040 /* TagRequest.swift */; };
 		5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */; };
 		5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE721771E3F0011C9E5 /* ViewController.swift */; };
 		5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE921771E3F0011C9E5 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		5C0F8B9A21787C4600BE2040 /* Tag.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tag.json; sourceTree = "<group>"; };
 		5C0F8B9E217887B200BE2040 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		5C0F8BA221788A4000BE2040 /* TagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagResponse.swift; sourceTree = "<group>"; };
+		5C0F8BA821788F8200BE2040 /* TagRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRequest.swift; sourceTree = "<group>"; };
 		5C7D9CE221771E3F0011C9E5 /* SampleCollectionVIew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleCollectionVIew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7D9CE721771E3F0011C9E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5C0F8BA721788F6E00BE2040 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5C0F8BA821788F8200BE2040 /* TagRequest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		5C7D9CD921771E3F0011C9E5 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 				5C0F8BA021788A1E00BE2040 /* ViewController */,
 				5C0F8B972178546D00BE2040 /* TagLayout */,
 				5C0F8BA121788A2F00BE2040 /* Model */,
+				5C0F8BA721788F6E00BE2040 /* API */,
 				5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */,
 				5C0F8B9A21787C4600BE2040 /* Tag.json */,
 				5C7D9CEC21771E410011C9E5 /* Assets.xcassets */,
@@ -458,6 +469,7 @@
 				5C0F8BA321788A4000BE2040 /* TagResponse.swift in Sources */,
 				5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */,
 				5C0F8B9F217887B200BE2040 /* R.generated.swift in Sources */,
+				5C0F8BA921788F8200BE2040 /* TagRequest.swift in Sources */,
 				5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */,
 				5C7D9D1B21774C630011C9E5 /* Cell.swift in Sources */,
 			);
