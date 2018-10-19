@@ -9,9 +9,10 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    var tagList = [TagResponse.Tag]()
+    private var tagList = [TagResponse.Tag]()
+    private var tappedTag = [String]()
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +62,15 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
-        guard let cellType = CellType(rawValue: tagList[indexPath.row].type) else { return }
-        //タップされているかを、borderのWidthでハンドリングしている
-        guard cell.label.layer.borderWidth == 0 else {
+        let tagList = self.tagList[indexPath.row]
+        guard let cellType = CellType(rawValue: tagList.type) else { return }
+        guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
+            tappedTag.append(tagList.tag)
             cell.tappedTag(cellType: cellType)
             return
         }
         cell.configureLabelLayer(cellType: cellType)
+        tappedTag.remove(at: deleteTagIndex)
     }
 }
 
