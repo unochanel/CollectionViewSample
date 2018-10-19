@@ -10,7 +10,7 @@ import UIKit
 
 final class ViewController: UIViewController {
     var tagList = [TagResponse.Tag]()
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -20,23 +20,24 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController {
-    private func configure() {
+    func configure() {
         collectionView.dataSource = self
+        collectionView.delegate = self
         getTagList()
         configureCell()
         configureCollctionView()
     }
     
-    private func configureCell() {
+    func configureCell() {
         collectionView.register(UINib(nibName: "Cell", bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
     }
     
-    private func configureCollctionView() {
+    func configureCollctionView() {
         let tagCellLayout = TagCellLayout(delegate: self)
         collectionView?.collectionViewLayout = tagCellLayout
     }
-
-    private func getTagList() {
+    
+    func getTagList() {
         TagRequest().getTag(handler: { [weak self] tagResponse in
             guard let weakSelf = self else { return }
             weakSelf.tagList = tagResponse.tag
@@ -49,11 +50,19 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tagList.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         cell.configureCell(item: tagList[indexPath.row])
         return cell
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
+        let cell = collectionView.cellForItem(at: indexPath) as! Cell
+        guard let cellType = CellType(rawValue: tagList[indexPath.row].type) else { return }
+        cell.tappedTag(cellType: cellType)
     }
 }
 

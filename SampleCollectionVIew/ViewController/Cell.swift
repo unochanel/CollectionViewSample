@@ -29,12 +29,21 @@ enum CellType: String {
             return UIColor.red.cgColor
         }
     }
+    
+    func tappedLabelColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.blue.cgColor
+        case .negative:
+            return UIColor.red.cgColor
+        }
+    }
 }
 
-class Cell: UICollectionViewCell {
+final class Cell: UICollectionViewCell {
     static let reuseIdentifier = "Cell"
     
-    @IBOutlet private weak var label: UILabel!
+    @IBOutlet weak var label: UILabel!
 
     func configureCell(item: TagResponse.Tag) {
         label.text = item.tag
@@ -44,8 +53,15 @@ class Cell: UICollectionViewCell {
 
     private func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
-        label.layer.borderWidth = 1
+        label.layer.borderWidth = 2
         label.layer.cornerRadius = 7
         label.layer.backgroundColor = cellType.labelColor()
+    }
+
+    func tappedTag(cellType: CellType) {
+        label.layer.borderWidth = 0
+        label.layer.cornerRadius = 7
+        label.layer.backgroundColor = cellType.tappedLabelColor()
+        print(label.layer.borderWidth)
     }
 }
