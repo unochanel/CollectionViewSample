@@ -69,6 +69,7 @@ public class TagCellLayout: UICollectionViewLayout {
         let height = layoutInfoList
             .filter { $0.isFirstElementInARow }
             .reduce(0, { $0 + $1.layoutAttribute.frame.height} )
+        //totalのrowCountをすることで、CollectionViewの高さを調節することができます。
         return CGSize(width: width, height: height + CGFloat(totalRowCount*12))
     }
 }
@@ -138,7 +139,7 @@ private extension TagCellLayout {
 
         if shouldMoveTagToNextRow(tagWidth: tagSize.width) {
             tagFrame.origin.x = 0.0
-            //ここいじれば、列ごとのセルの感覚を変更することができます
+            //ここいじれば、列ごとのセルの間隔を変更することができます(変更した間隔は、collectionViewに反映されません）
             tagFrame.origin.y += (currentTagFrame.height + 10)
             totalRowCount += 1
             isFirstElementInARow = true
