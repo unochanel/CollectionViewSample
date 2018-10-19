@@ -19,6 +19,9 @@ final class CreateTagViewController: UIViewController {
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     
+    private var selectedType: CellType!
+    private var index: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -61,5 +64,15 @@ extension CreateTagViewController: UITableViewDataSource {
 extension CreateTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 81
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
+        switch indexPath.row {
+        case 0:  selectedType = .positive
+        case 1:  selectedType = .normal
+        case 2:  selectedType = .negative
+        default:  return
+        }
     }
 }
