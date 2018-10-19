@@ -12,8 +12,11 @@ final class CreateTagViewController: UIViewController {
     static func make() -> CreateTagViewController {
         let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
+        viewController.modalPresentationStyle = .overCurrentContext
         return viewController
     }
+
+    @IBOutlet private weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

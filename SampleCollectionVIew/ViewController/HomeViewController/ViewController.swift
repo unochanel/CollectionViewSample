@@ -106,6 +106,6 @@ extension ViewController {
     private func presentCreateTagViewController() {
         let viewController = CreateTagViewController.make()
         print(self.tagtext)
-        present(viewController, animated: true)
+        present(viewController, animated: false)
     }
 }
