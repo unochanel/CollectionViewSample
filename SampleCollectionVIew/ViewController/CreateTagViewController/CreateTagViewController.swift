@@ -16,12 +16,15 @@ final class CreateTagViewController: UIViewController {
         return viewController
     }
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var mainView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
+    }
 
-        // Do any additional setup after loading the view.
+    private func configure() {
+        
     }
 
 }
