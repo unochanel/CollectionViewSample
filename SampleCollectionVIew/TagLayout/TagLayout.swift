@@ -10,12 +10,10 @@ import Foundation
 import UIKit
 
 public protocol TagCellLayoutDelegate: NSObjectProtocol {
-    
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index:Int) -> CGSize
 }
 
 struct LayoutInfo {
-    
     var layoutAttribute: UICollectionViewLayoutAttributes
     var whiteSpace: CGFloat = 0.0
     var isFirstElementInARow = false
@@ -30,6 +28,7 @@ public class TagCellLayout: UICollectionViewLayout {
     var layoutInfoList: [LayoutInfo] = []
     var numberOfTagsInCurrentRow = 0
     var currentTagIndex: Int = 0
+    var totalRowCount: Int!
     
     weak var delegate: TagCellLayoutDelegate?
     
@@ -69,8 +68,8 @@ public class TagCellLayout: UICollectionViewLayout {
         let width = collectionViewWidth
         let height = layoutInfoList
             .filter { $0.isFirstElementInARow }
-            .reduce(0, { $0 + $1.layoutAttribute.frame.height })
-        return CGSize(width: width, height: height)
+            .reduce(0, { $0 + $1.layoutAttribute.frame.height} )
+        return CGSize(width: width, height: height + CGFloat(totalRowCount*12))
     }
 }
 
@@ -80,7 +79,6 @@ private extension TagCellLayout {
         var frame = info.frame
         //ここを変更すれば、各セルの横幅の余白が作れます！
         frame.origin.x += info.bounds.width + 12
-        
         return frame
     }
     
@@ -142,6 +140,7 @@ private extension TagCellLayout {
             tagFrame.origin.x = 0.0
             //ここいじれば、列ごとのセルの感覚を変更することができます
             tagFrame.origin.y += (currentTagFrame.height + 10)
+            totalRowCount += 1
             isFirstElementInARow = true
         }
         let attribute = layoutAttribute(tagIndex: tagIndex, tagFrame: tagFrame)
@@ -212,5 +211,6 @@ private extension TagCellLayout {
     func resetLayoutState() {
         layoutInfoList = Array<LayoutInfo>()
         numberOfTagsInCurrentRow = 0
+        totalRowCount = 0
     }
 }
