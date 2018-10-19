@@ -15,16 +15,51 @@ final class CreateTagViewController: UIViewController {
         viewController.modalPresentationStyle = .overCurrentContext
         return viewController
     }
-
+    
     @IBOutlet private weak var mainView: UIView!
-
+    @IBOutlet private weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
-
-    private func configure() {
-        
+    
+    @IBAction private func registerButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction private func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
+extension CreateTagViewController {
+    private func configure() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: TagViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: TagViewCell.reuseIdentifier)
+    }
+}
+
+extension CreateTagViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return CellType.negative.index + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TagViewCell.reuseIdentifier, for: indexPath) as! TagViewCell
+        switch indexPath.row {
+        case 0:  cell.configureCell(cellType: .positive)
+        case 1:  cell.configureCell(cellType: .normal)
+        case 2:  cell.configureCell(cellType: .negative)
+        default: return cell
+        }
+        return cell
+    }
+}
+
+extension CreateTagViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 81
+    }
 }

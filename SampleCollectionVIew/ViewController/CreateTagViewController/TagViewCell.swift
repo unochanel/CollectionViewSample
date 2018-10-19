@@ -8,17 +8,31 @@
 
 import UIKit
 
-class TagViewCell: UITableViewCell {
+final class TagViewCell: UITableViewCell {
+    static let reuseIdentifier = "TagViewCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet private weak var faceImage: UIImageView!
+    @IBOutlet private weak var tagTypeLabel: UILabel!
+    @IBOutlet private weak var explainTagTypeLabel: UILabel!
+    @IBOutlet private weak var separeteinsent: UIView!
     
+    func configureCell(cellType: CellType) {
+        switch cellType {
+        case .positive:
+            faceImage.image = R.image.positive()!
+            tagTypeLabel.text = "ポジティブ"
+            explainTagTypeLabel.text = "カラダやココロにとって良いこと"
+        case .normal:
+            separeteinsent.isHidden = true
+            faceImage.image = R.image.normal()!
+            tagTypeLabel.text = "ノーマル"
+            explainTagTypeLabel.text = "どちらでもない"
+        case .negative:
+            separeteinsent.isHidden = true
+            faceImage.image = R.image.negative()!
+            tagTypeLabel.text = "ネガティブ"
+            explainTagTypeLabel.text = "カラダやココロにとって悪いこと"
+        }
+    }
 }

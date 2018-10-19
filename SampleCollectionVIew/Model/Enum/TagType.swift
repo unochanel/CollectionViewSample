@@ -46,4 +46,12 @@ enum CellType: String {
             return UIColor.black.cgColor
         }
     }
+
+    var index: Int {
+        switch self {
+        case .positive: return 0
+        case .normal: return 1
+        case .negative: return 2
+        }
+    }
 }
