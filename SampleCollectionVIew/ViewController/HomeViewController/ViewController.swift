@@ -18,32 +18,13 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
-}
 
-extension ViewController {
-    func configure() {
+    private func configure() {
         collectionView.dataSource = self
         collectionView.delegate = self
         getTagList()
         configureCell()
         configureCollctionView()
-    }
-    
-    func configureCell() {
-        collectionView.register(UINib(nibName: "Cell", bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
-    }
-    
-    func configureCollctionView() {
-        let tagCellLayout = TagCellLayout(delegate: self)
-        collectionView?.collectionViewLayout = tagCellLayout
-    }
-    
-    func getTagList() {
-        TagRequest().getTag(handler: { [weak self] tagResponse in
-            guard let weakSelf = self else { return }
-            weakSelf.tagList = tagResponse.tag
-            weakSelf.collectionView.reloadData()
-        })
     }
 }
 
@@ -63,6 +44,10 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         let tagList = self.tagList[indexPath.row]
+        if tagList.tag == "タグ作成" {
+            presentCreateTagViewController()
+        }
+
         guard let cellType = CellType(rawValue: tagList.type) else { return }
         guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
             tappedTag.append(tagList.tag)
@@ -76,10 +61,36 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
+        //TODO:もっと綺麗にCellの大きさを決めれそう
         let label = UILabel()
         label.text = tagList[index].tag
         label.sizeToFit()
-        let cellSize = CGSize(width: label.frame.size.width + 24, height: label.frame.size.height + 20)
+        let cellSize = CGSize(width: label.frame.size.width + 24, height: label.frame.size.height + 24)
         return cellSize
+    }
+}
+
+
+extension ViewController {
+    private func configureCell() {
+        collectionView.register(UINib(nibName: "Cell", bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
+    }
+    
+    private func configureCollctionView() {
+        let tagCellLayout = TagCellLayout(delegate: self)
+        collectionView?.collectionViewLayout = tagCellLayout
+    }
+    
+    private func getTagList() {
+        TagRequest().getTag(handler: { [weak self] tagResponse in
+            guard let weakSelf = self else { return }
+            weakSelf.tagList = tagResponse.tag
+            weakSelf.collectionView.reloadData()
+        })
+    }
+
+    private func presentCreateTagViewController() {
+        let viewController = CreateTagViewController.make()
+        present(viewController, animated: true)
     }
 }
