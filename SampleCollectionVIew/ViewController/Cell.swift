@@ -51,7 +51,7 @@ final class Cell: UICollectionViewCell {
         configureLabelLayer(cellType: cellType)
     }
 
-    private func configureLabelLayer(cellType: CellType) {
+    func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
         label.layer.borderWidth = 2
         label.layer.cornerRadius = 7
@@ -62,6 +62,5 @@ final class Cell: UICollectionViewCell {
         label.layer.borderWidth = 0
         label.layer.cornerRadius = 7
         label.layer.backgroundColor = cellType.tappedLabelColor()
-        print(label.layer.borderWidth)
     }
 }

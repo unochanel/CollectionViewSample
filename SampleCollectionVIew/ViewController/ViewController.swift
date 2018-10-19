@@ -62,7 +62,12 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         guard let cellType = CellType(rawValue: tagList[indexPath.row].type) else { return }
-        cell.tappedTag(cellType: cellType)
+        //タップされているかを、borderのWidthでハンドリングしている
+        guard cell.label.layer.borderWidth == 0 else {
+            cell.tappedTag(cellType: cellType)
+            return
+        }
+        cell.configureLabelLayer(cellType: cellType)
     }
 }
 
