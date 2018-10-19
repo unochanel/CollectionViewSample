@@ -127,10 +127,8 @@
 		5C0F8BA021788A1E00BE2040 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C7D9D1A21774C630011C9E5 /* Cell.xib */,
-				5C7D9D1921774C630011C9E5 /* Cell.swift */,
-				5C7D9CE921771E3F0011C9E5 /* Main.storyboard */,
-				5C7D9CE721771E3F0011C9E5 /* ViewController.swift */,
+				5C0F8BAE21799AAB00BE2040 /* CreateTagViewController */,
+				5C0F8BAD21799A9B00BE2040 /* HomeViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -149,6 +147,24 @@
 				5C0F8BA821788F8200BE2040 /* TagRequest.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		5C0F8BAD21799A9B00BE2040 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C7D9D1921774C630011C9E5 /* Cell.swift */,
+				5C7D9D1A21774C630011C9E5 /* Cell.xib */,
+				5C7D9CE921771E3F0011C9E5 /* Main.storyboard */,
+				5C7D9CE721771E3F0011C9E5 /* ViewController.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		5C0F8BAE21799AAB00BE2040 /* CreateTagViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateTagViewController;
 			sourceTree = "<group>";
 		};
 		5C7D9CD921771E3F0011C9E5 = {
