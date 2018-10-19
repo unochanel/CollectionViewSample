@@ -120,14 +120,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5C0F8B972178546D00BE2040 /* TagLayout */ = {
-			isa = PBXGroup;
-			children = (
-				5C0F8B98217854D300BE2040 /* TagLayout.swift */,
-			);
-			path = TagLayout;
-			sourceTree = "<group>";
-		};
 		5C0F8BA021788A1E00BE2040 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +152,7 @@
 				5C7D9D1A21774C630011C9E5 /* Cell.xib */,
 				5C7D9CE921771E3F0011C9E5 /* Main.storyboard */,
 				5C7D9CE721771E3F0011C9E5 /* ViewController.swift */,
+				5C0F8B98217854D300BE2040 /* TagLayout.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -199,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				5C0F8BA021788A1E00BE2040 /* ViewController */,
-				5C0F8B972178546D00BE2040 /* TagLayout */,
 				5C0F8BA121788A2F00BE2040 /* Model */,
 				5C0F8BA721788F6E00BE2040 /* API */,
 				5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */,
