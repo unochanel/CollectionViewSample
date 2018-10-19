@@ -13,7 +13,7 @@
         <!--Create Tag View Controller-->
         <scene sceneID="D5h-rX-z2L">
             <objects>
-                <viewController id="G3W-Fd-JaP" customClass="CreateTagViewController" customModule="SampleCollectionVIew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateTagViewController" id="G3W-Fd-JaP" customClass="CreateTagViewController" customModule="SampleCollectionVIew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zqv-bS-UGd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

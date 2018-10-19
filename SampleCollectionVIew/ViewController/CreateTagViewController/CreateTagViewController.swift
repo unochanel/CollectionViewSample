@@ -8,7 +8,12 @@
 
 import UIKit
 
-class CreateTagViewController: UIViewController {
+final class CreateTagViewController: UIViewController {
+    static func make() -> CreateTagViewController {
+        let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
+        return viewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
