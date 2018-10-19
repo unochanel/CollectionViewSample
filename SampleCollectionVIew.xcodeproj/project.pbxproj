@@ -16,6 +16,10 @@
 		5C0F8BA921788F8200BE2040 /* TagRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BA821788F8200BE2040 /* TagRequest.swift */; };
 		5C0F8BB121799F8D00BE2040 /* CreateTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB021799F8D00BE2040 /* CreateTagViewController.swift */; };
 		5C0F8BB32179A00F00BE2040 /* CreateTagViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB22179A00F00BE2040 /* CreateTagViewController.storyboard */; };
+		5C0F8BB62179AB1900BE2040 /* UIViewController+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB52179AB1900BE2040 /* UIViewController+Ex.swift */; };
+		5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */; };
+		5C0F8BBA2179B0AF00BE2040 /* UIView.Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */; };
+		5C0F8BBC2179B0F800BE2040 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BBB2179B0F800BE2040 /* Utility.swift */; };
 		5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */; };
 		5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE721771E3F0011C9E5 /* ViewController.swift */; };
 		5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE921771E3F0011C9E5 /* Main.storyboard */; };
@@ -59,6 +63,10 @@
 		5C0F8BA821788F8200BE2040 /* TagRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRequest.swift; sourceTree = "<group>"; };
 		5C0F8BB021799F8D00BE2040 /* CreateTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagViewController.swift; sourceTree = "<group>"; };
 		5C0F8BB22179A00F00BE2040 /* CreateTagViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTagViewController.storyboard; sourceTree = "<group>"; };
+		5C0F8BB52179AB1900BE2040 /* UIViewController+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ex.swift"; sourceTree = "<group>"; };
+		5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +Ex.swift"; sourceTree = "<group>"; };
+		5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.Ex.swift; sourceTree = "<group>"; };
+		5C0F8BBB2179B0F800BE2040 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5C7D9CE221771E3F0011C9E5 /* SampleCollectionVIew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleCollectionVIew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7D9CE721771E3F0011C9E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,14 +128,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5C0F8B972178546D00BE2040 /* TagLayout */ = {
-			isa = PBXGroup;
-			children = (
-				5C0F8B98217854D300BE2040 /* TagLayout.swift */,
-			);
-			path = TagLayout;
-			sourceTree = "<group>";
-		};
 		5C0F8BA021788A1E00BE2040 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +160,7 @@
 				5C7D9D1A21774C630011C9E5 /* Cell.xib */,
 				5C7D9CE921771E3F0011C9E5 /* Main.storyboard */,
 				5C7D9CE721771E3F0011C9E5 /* ViewController.swift */,
+				5C0F8B98217854D300BE2040 /* TagLayout.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -171,6 +172,17 @@
 				5C0F8BB22179A00F00BE2040 /* CreateTagViewController.storyboard */,
 			);
 			path = CreateTagViewController;
+			sourceTree = "<group>";
+		};
+		5C0F8BB42179AB0000BE2040 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5C0F8BB52179AB1900BE2040 /* UIViewController+Ex.swift */,
+				5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */,
+				5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */,
+				5C0F8BBB2179B0F800BE2040 /* Utility.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		5C7D9CD921771E3F0011C9E5 = {
@@ -199,9 +211,9 @@
 			isa = PBXGroup;
 			children = (
 				5C0F8BA021788A1E00BE2040 /* ViewController */,
-				5C0F8B972178546D00BE2040 /* TagLayout */,
 				5C0F8BA121788A2F00BE2040 /* Model */,
 				5C0F8BA721788F6E00BE2040 /* API */,
+				5C0F8BB42179AB0000BE2040 /* Extension */,
 				5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */,
 				5C0F8B9A21787C4600BE2040 /* Tag.json */,
 				5C7D9CEC21771E410011C9E5 /* Assets.xcassets */,
@@ -489,10 +501,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C0F8B99217854D300BE2040 /* TagLayout.swift in Sources */,
+				5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */,
+				5C0F8BB62179AB1900BE2040 /* UIViewController+Ex.swift in Sources */,
 				5C0F8BA321788A4000BE2040 /* TagResponse.swift in Sources */,
 				5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */,
 				5C0F8B9F217887B200BE2040 /* R.generated.swift in Sources */,
+				5C0F8BBA2179B0AF00BE2040 /* UIView.Ex.swift in Sources */,
 				5C0F8BA921788F8200BE2040 /* TagRequest.swift in Sources */,
+				5C0F8BBC2179B0F800BE2040 /* Utility.swift in Sources */,
 				5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */,
 				5C7D9D1B21774C630011C9E5 /* Cell.swift in Sources */,
 				5C0F8BB121799F8D00BE2040 /* CreateTagViewController.swift in Sources */,

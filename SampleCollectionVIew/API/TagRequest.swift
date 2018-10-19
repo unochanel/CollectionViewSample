@@ -9,7 +9,6 @@
 import Foundation
 
 final class TagRequest {
-    //エラーかエラーでないかをnilで返しているため、それぞれの引数に`?`をつけている
     func getTag(handler: @escaping (TagResponse) -> Void) {
         let data = try! Data(contentsOf: R.file.tagJson()!)
         let list = try! JSONDecoder().decode(TagResponse.self, from: data)
