@@ -20,6 +20,9 @@
 		5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */; };
 		5C0F8BBA2179B0AF00BE2040 /* UIView.Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */; };
 		5C0F8BBC2179B0F800BE2040 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BBB2179B0F800BE2040 /* Utility.swift */; };
+		5C0F8BBF2179D08500BE2040 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BBE2179D08500BE2040 /* TagType.swift */; };
+		5C0F8BC42179E52A00BE2040 /* TagViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BC22179E52A00BE2040 /* TagViewCell.swift */; };
+		5C0F8BC52179E52A00BE2040 /* TagViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0F8BC32179E52A00BE2040 /* TagViewCell.xib */; };
 		5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */; };
 		5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE721771E3F0011C9E5 /* ViewController.swift */; };
 		5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE921771E3F0011C9E5 /* Main.storyboard */; };
@@ -67,6 +70,9 @@
 		5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +Ex.swift"; sourceTree = "<group>"; };
 		5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.Ex.swift; sourceTree = "<group>"; };
 		5C0F8BBB2179B0F800BE2040 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		5C0F8BBE2179D08500BE2040 /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
+		5C0F8BC22179E52A00BE2040 /* TagViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewCell.swift; sourceTree = "<group>"; };
+		5C0F8BC32179E52A00BE2040 /* TagViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagViewCell.xib; sourceTree = "<group>"; };
 		5C7D9CE221771E3F0011C9E5 /* SampleCollectionVIew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleCollectionVIew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7D9CE721771E3F0011C9E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,7 +146,8 @@
 		5C0F8BA121788A2F00BE2040 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5C0F8BA221788A4000BE2040 /* TagResponse.swift */,
+				5C0F8BC12179D0CD00BE2040 /* Enum */,
+				5C0F8BC02179D0C200BE2040 /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 			children = (
 				5C0F8BB021799F8D00BE2040 /* CreateTagViewController.swift */,
 				5C0F8BB22179A00F00BE2040 /* CreateTagViewController.storyboard */,
+				5C0F8BC22179E52A00BE2040 /* TagViewCell.swift */,
+				5C0F8BC32179E52A00BE2040 /* TagViewCell.xib */,
 			);
 			path = CreateTagViewController;
 			sourceTree = "<group>";
@@ -183,6 +192,22 @@
 				5C0F8BBB2179B0F800BE2040 /* Utility.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		5C0F8BC02179D0C200BE2040 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				5C0F8BA221788A4000BE2040 /* TagResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		5C0F8BC12179D0CD00BE2040 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				5C0F8BBE2179D08500BE2040 /* TagType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		5C7D9CD921771E3F0011C9E5 = {
@@ -367,6 +392,7 @@
 				5C7D9CED21771E410011C9E5 /* Assets.xcassets in Resources */,
 				5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */,
 				5C0F8B9B21787C4600BE2040 /* Tag.json in Resources */,
+				5C0F8BC52179E52A00BE2040 /* TagViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,9 +529,11 @@
 				5C0F8B99217854D300BE2040 /* TagLayout.swift in Sources */,
 				5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */,
 				5C0F8BB62179AB1900BE2040 /* UIViewController+Ex.swift in Sources */,
+				5C0F8BBF2179D08500BE2040 /* TagType.swift in Sources */,
 				5C0F8BA321788A4000BE2040 /* TagResponse.swift in Sources */,
 				5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */,
 				5C0F8B9F217887B200BE2040 /* R.generated.swift in Sources */,
+				5C0F8BC42179E52A00BE2040 /* TagViewCell.swift in Sources */,
 				5C0F8BBA2179B0AF00BE2040 /* UIView.Ex.swift in Sources */,
 				5C0F8BA921788F8200BE2040 /* TagRequest.swift in Sources */,
 				5C0F8BBC2179B0F800BE2040 /* Utility.swift in Sources */,
