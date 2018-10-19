@@ -11,6 +11,7 @@ import UIKit
 final class ViewController: UIViewController {
     private var tagList = [TagResponse.Tag]()
     private var tappedTag = [String]()
+    private var tagtext: String!
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -18,7 +19,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
-
+    
     private func configure() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -45,9 +46,9 @@ extension ViewController: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         let tagList = self.tagList[indexPath.row]
         if tagList.tag == "タグ作成" {
-            presentCreateTagViewController()
+            presentTextFieldAlertViewController()
         }
-
+        
         guard let cellType = CellType(rawValue: tagList.type) else { return }
         guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
             tappedTag.append(tagList.tag)
@@ -88,9 +89,23 @@ extension ViewController {
             weakSelf.collectionView.reloadData()
         })
     }
-
+    
+    private func presentTextFieldAlertViewController() {
+        AlertController.shared.showAddTextFieldAlertViewController(
+            title: "タグを作成する",
+            message: "10文字以内でタグを作成する",
+            fromViewController: self,
+            completion: { text in
+                guard let text = text else { return }
+                self.tagtext = text
+                self.dismiss(animated: false)
+                self.presentCreateTagViewController()
+        })
+    }
+    
     private func presentCreateTagViewController() {
         let viewController = CreateTagViewController.make()
+        print(self.tagtext)
         present(viewController, animated: true)
     }
 }
