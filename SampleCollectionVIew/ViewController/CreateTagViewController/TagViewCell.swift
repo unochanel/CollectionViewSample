@@ -11,7 +11,7 @@ import UIKit
 final class TagViewCell: UITableViewCell {
     static let reuseIdentifier = "TagViewCell"
 
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet private weak var faceImage: UIImageView!
     @IBOutlet private weak var tagTypeLabel: UILabel!
     @IBOutlet private weak var explainTagTypeLabel: UILabel!

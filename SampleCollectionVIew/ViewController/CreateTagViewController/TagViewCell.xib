@@ -19,14 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="299" height="80.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaY-90-zjJ">
-                        <rect key="frame" x="17.5" y="28.5" width="24" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="24" id="VLL-Ks-w5Y"/>
-                            <constraint firstAttribute="width" constant="24" id="rFt-hO-DXu"/>
-                        </constraints>
-                        <state key="normal" image="off"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="positive" translatesAutoresizingMaskIntoConstraints="NO" id="uSJ-vs-o9I">
                         <rect key="frame" x="55" y="15" width="24" height="24"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,6 +56,9 @@
                             <constraint firstAttribute="height" constant="0.29999999999999999" id="aGB-id-7xj"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="off" translatesAutoresizingMaskIntoConstraints="NO" id="RwL-da-5Ys">
+                        <rect key="frame" x="17.5" y="28.5" width="24" height="24"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="uSJ-vs-o9I" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-82.5" id="0Ju-7X-Xkb"/>
@@ -74,14 +69,14 @@
                     <constraint firstItem="56m-Ah-5Re" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Igm-cA-XgO"/>
                     <constraint firstItem="6RB-QT-Ccw" firstAttribute="leading" secondItem="uSJ-vs-o9I" secondAttribute="trailing" id="MaX-A3-cMz"/>
                     <constraint firstAttribute="trailing" secondItem="56m-Ah-5Re" secondAttribute="trailing" id="O30-it-1PQ"/>
-                    <constraint firstItem="AaY-90-zjJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-120" id="oDq-8k-4dl"/>
-                    <constraint firstItem="AaY-90-zjJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sQs-e6-oN0"/>
+                    <constraint firstItem="RwL-da-5Ys" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-120" id="axu-Se-5sw"/>
+                    <constraint firstItem="RwL-da-5Ys" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="obH-nG-dSQ"/>
                     <constraint firstItem="6RB-QT-Ccw" firstAttribute="centerY" secondItem="uSJ-vs-o9I" secondAttribute="centerY" id="yXh-6q-4KH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="checkButton" destination="AaY-90-zjJ" id="Lu3-ac-xRM"/>
+                <outlet property="checkImageView" destination="RwL-da-5Ys" id="Zhe-Wz-j0h"/>
                 <outlet property="explainTagTypeLabel" destination="yU6-fP-AsF" id="rgP-36-ap6"/>
                 <outlet property="faceImage" destination="uSJ-vs-o9I" id="mgA-td-zUX"/>
                 <outlet property="separeteinsent" destination="56m-Ah-5Re" id="I1d-2M-vgp"/>
