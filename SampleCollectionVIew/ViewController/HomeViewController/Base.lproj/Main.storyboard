@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-2L-evO">
-                                <rect key="frame" x="16" y="135" width="343" height="532"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I3L-MS-B3J">
                                     <size key="itemSize" width="50" height="50"/>
@@ -63,8 +63,8 @@
                             <constraint firstItem="ycd-2L-evO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="O16-KG-lam"/>
                             <constraint firstItem="ycd-2L-evO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="Rat-8b-tHo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ycd-2L-evO" secondAttribute="bottom" id="VU7-Lr-ZK8"/>
-                            <constraint firstItem="ycd-2L-evO" firstAttribute="top" secondItem="4KH-bD-T57" secondAttribute="bottom" constant="35" id="XdT-EZ-44T"/>
                             <constraint firstItem="gJl-1m-yKP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bar-UX-VZC"/>
+                            <constraint firstItem="ycd-2L-evO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eZs-Nz-1qt"/>
                             <constraint firstItem="4KH-bD-T57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="51" id="udg-yJ-htC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
