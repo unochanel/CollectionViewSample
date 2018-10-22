@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
     private var tappedTag = [String]()
     private var tagtext: String!
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +78,14 @@ extension ViewController: TagCellLayoutDelegate {
     }
 }
 
+extension ViewController: TappedButtonDelegateProtocol {
+    func tappedCreateButtonDelegateProtocol() {
+        tagList.removeAll()
+        tagList = CreateManeger.shared.all()
+        collectionView.reloadData()
+    }
+}
+
 extension ViewController {
     private func configureCell() {
         collectionView.register(UINib(nibName: Cell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
@@ -111,8 +119,8 @@ extension ViewController {
         })
     }
     
-    private func presentCreateTagViewConrtroller(text: String) {
-        let viewController = CreateTagViewController.make(text: text)
+    private func presentCreateTagViewController(text: String) {
+        let viewController = CreateTagViewController.make(text: text, delegate: self)
         present(viewController, animated: true)
     }
     

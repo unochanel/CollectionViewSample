@@ -9,16 +9,19 @@
 import UIKit
 
 final class CreateTagViewController: UIViewController {
-    static func make(text: String) -> CreateTagViewController {
+    static func make(text: String, delegate: ViewController) -> CreateTagViewController {
         let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
         viewController.tagTitle = text
+        viewController.tappedDelgate = delegate
         viewController.modalPresentationStyle = .overCurrentContext
+        
         return viewController
     }
     
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    private var tappedDelgate: TappedButtonDelegateProtocol?
     
     private var selectedType: CellType = .normal
     private var tagTitle: String!
@@ -31,6 +34,7 @@ final class CreateTagViewController: UIViewController {
     
     @IBAction private func registerButton(_ sender: Any) {
         CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
+        tappedDelgate?.tappedCreateButtonDelegateProtocol()
         dismiss(animated: true, completion: nil)
     }
     
