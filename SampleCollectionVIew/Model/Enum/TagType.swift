@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CellType: String {
+enum CellType: Int {
     case positive
     case normal
     case negative
@@ -46,12 +46,20 @@ enum CellType: String {
             return UIColor.black.cgColor
         }
     }
-
-    var index: Int {
+    
+    func toString() -> String {
         switch self {
-        case .positive: return 0
-        case .normal: return 1
-        case .negative: return 2
+        case .positive: return "ポジティブ"
+        case .normal: return "ノーマル"
+        case .negative: return "ネガティブ"
+        }
+    }
+    
+    func explain() -> String {
+        switch self {
+        case .positive: return "カラダやココロにとって良いこと"
+        case .normal: return "どちらでもない"
+        case .negative: return "カラダやココロにとって悪いこと"
         }
     }
 }
