@@ -69,8 +69,8 @@ public class TagCellLayout: UICollectionViewLayout {
         let height = layoutInfoList
             .filter { $0.isFirstElementInARow }
             .reduce(0, { $0 + $1.layoutAttribute.frame.height} )
-        //totalのrowCountをすることで、CollectionViewの高さを調節することができます。
-        return CGSize(width: width, height: height + CGFloat(totalRowCount*12))
+        //totalのrowCountをすることで、CollectionViewの高さを調節することができます。 かつ OKボタンの位置までコレクションビューを上げるために１００足しています
+        return CGSize(width: width, height: height + CGFloat(totalRowCount*12) + 100)
     }
 }
 
