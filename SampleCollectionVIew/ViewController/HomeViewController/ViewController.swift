@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
-    
+
     private func configure() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -72,7 +72,6 @@ extension ViewController: TagCellLayoutDelegate {
         return cellSize
     }
 }
-
 
 extension ViewController {
     private func configureCell() {

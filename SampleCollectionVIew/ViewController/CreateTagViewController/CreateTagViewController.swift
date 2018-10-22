@@ -19,7 +19,7 @@ final class CreateTagViewController: UIViewController {
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     
-    private var selectedType: CellType!
+    private var selectedType: CellType = .normal
     private var index: Int!
     
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ final class CreateTagViewController: UIViewController {
     }
     
     @IBAction private func backButton(_ sender: Any) {
+        print(selectedType)
         dismiss(animated: true, completion: nil)
     }
 }
@@ -69,7 +70,7 @@ extension CreateTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
         cell.checkImageView.image = R.image.on()!
-        selectedType = CellType(rawValue: indexPath.row)
+        selectedType = CellType(rawValue: indexPath.row) ?? .normal
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
