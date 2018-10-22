@@ -20,8 +20,8 @@ final class Cell: UICollectionViewCell {
 
     func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
-        label.layer.borderWidth = 2
-        label.layer.cornerRadius = 7
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 4
         label.layer.backgroundColor = cellType.labelColor()
         label.textColor = cellType.textColor()
     }
