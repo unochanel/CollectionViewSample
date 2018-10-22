@@ -113,7 +113,7 @@ extension CreateTagViewController {
     }
 
     private func dismissViewController() {
-        delay(0.35, closure: {
+        delay(0.5, closure: {
             self.dismiss(animated: false)
         })
     }

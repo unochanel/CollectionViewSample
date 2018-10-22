@@ -77,9 +77,14 @@
                                     <constraint firstItem="O7o-61-C6s" firstAttribute="centerX" secondItem="DAn-qI-SbT" secondAttribute="centerX" id="tIH-FR-oW6"/>
                                     <constraint firstItem="9yi-OK-u5O" firstAttribute="centerX" secondItem="DAn-qI-SbT" secondAttribute="centerX" id="tMj-BM-nDJ"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.59698737157534243" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerY" secondItem="zqv-bS-UGd" secondAttribute="centerY" id="5UB-bk-Sf1"/>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerX" secondItem="zqv-bS-UGd" secondAttribute="centerX" id="nbE-dW-rQw"/>
