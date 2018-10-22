@@ -46,7 +46,7 @@ extension CreateTagViewController {
 
 extension CreateTagViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CellType.negative.index + 1
+        return CellType.negative.rawValue + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,13 +66,15 @@ extension CreateTagViewController: UITableViewDelegate {
         return 81
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
-        switch indexPath.row {
-        case 0:  selectedType = .positive
-        case 1:  selectedType = .normal
-        case 2:  selectedType = .negative
-        default:  return
-        }
+        cell.checkImageView.image = R.image.on()!
+        cell.selectionStyle = .none
+        selectedType = CellType(rawValue: indexPath.row)
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
+        cell.checkImageView.image = R.image.off()!
     }
 }
