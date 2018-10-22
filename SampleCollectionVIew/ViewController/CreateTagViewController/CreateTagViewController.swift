@@ -39,8 +39,7 @@ final class CreateTagViewController: UIViewController {
     }
     
     @IBAction private func backButton(_ sender: Any) {
-        //TODO: Alertを表示させる
-        dismiss(animated: true, completion: nil)
+        showActionSheetViewController()
     }
 }
 
@@ -73,15 +72,35 @@ extension CreateTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 81
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
         cell.checkImageView.image = R.image.on()!
         selectedType = CellType(rawValue: indexPath.row) ?? .normal
     }
-
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
         cell.checkImageView.image = R.image.off()!
+    }
+}
+
+extension CreateTagViewController {
+    private func showActionSheetViewController() {
+        AlertController.shared.showActionTwoSection(
+            title: "編集内容を破棄しますか？",
+            defaultTitle: "破棄",
+            otherTitle: "内容を保存する",
+            fromViewController: self,
+            completion: { [weak self] keep in
+                guard let weakSelf = self else { return }
+                guard keep else {
+                    CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle))
+                    weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
+                    weakSelf.dismiss(animated: true, completion: nil)
+                    return
+                }
+                weakSelf.dismiss(animated: true, completion: nil)
+        })
     }
 }

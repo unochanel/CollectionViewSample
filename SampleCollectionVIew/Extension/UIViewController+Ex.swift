@@ -59,4 +59,22 @@ public final class AlertController {
         }))
         fromViewController.present(alertController, animated: true)
     }
+
+    public func showActionTwoSection(title: String? = nil, message: String? = nil ,
+                              defaultTitle: String, otherTitle: String,
+                              fromViewController: UIViewController,
+                              completion: ((Bool) -> Void)?) {
+        
+        let actionController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        actionController.addAction(UIAlertAction(title: defaultTitle, style: .destructive, handler: { (_: UIAlertAction) -> Void in
+            completion?(true)
+        }))
+        actionController.addAction(UIAlertAction(title: otherTitle, style: .default, handler: { (_: UIAlertAction) -> Void in
+            completion?(false)
+        }))
+        actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in})
+        
+        fromViewController.present(actionController, animated: true, completion: nil)
+    }
+
 }
