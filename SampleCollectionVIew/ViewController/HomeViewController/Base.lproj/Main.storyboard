@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-2L-evO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-2L-evO">
                                 <rect key="frame" x="16" y="0.0" width="343" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I3L-MS-B3J">
                                     <size key="itemSize" width="50" height="50"/>
@@ -30,9 +29,12 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-1m-yKP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-1m-yKP">
                                 <rect key="frame" x="59.5" y="558" width="256" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="vrR-7P-InC"/>
+                                    <constraint firstAttribute="width" constant="256" id="zsB-N8-kiK"/>
+                                </constraints>
                                 <state key="normal" image="active">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -64,9 +66,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ycd-2L-evO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="26l-qr-NjJ"/>
                             <constraint firstItem="esE-7I-ekV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BHZ-nc-nci"/>
                             <constraint firstItem="esE-7I-ekV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Dy8-R2-Mzh"/>
+                            <constraint firstItem="ycd-2L-evO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MaK-Vl-TC2"/>
                             <constraint firstItem="esE-7I-ekV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NXX-lY-kEP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ycd-2L-evO" secondAttribute="trailing" constant="16" id="NtG-hn-Enw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gJl-1m-yKP" secondAttribute="bottom" constant="45" id="iNF-Pm-Jv0"/>
+                            <constraint firstItem="gJl-1m-yKP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lAR-tY-8sQ"/>
+                            <constraint firstItem="ycd-2L-evO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qYY-MK-nsM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -18,6 +18,7 @@ final class Cell: UICollectionViewCell {
         configureLabelLayer(cellType: cellType)
     }
 
+    
     func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
         label.layer.borderWidth = 1

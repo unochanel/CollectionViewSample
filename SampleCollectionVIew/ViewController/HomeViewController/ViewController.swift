@@ -89,7 +89,7 @@ extension ViewController: TappedButtonDelegateProtocol {
 extension ViewController {
     private func configureCell() {
         collectionView.register(UINib(nibName: Cell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
-        collectionView?.contentInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: 130, left: 0, bottom: 0, right: 0)
     }
     
     private func configureCollctionView() {
