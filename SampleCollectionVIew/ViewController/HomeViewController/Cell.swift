@@ -23,9 +23,11 @@ final class Cell: UICollectionViewCell {
         label.layer.borderWidth = 2
         label.layer.cornerRadius = 7
         label.layer.backgroundColor = cellType.labelColor()
+        label.textColor = cellType.textColor()
     }
 
     func tappedTag(cellType: CellType) {
+        label.textColor = UIColor.white
         label.layer.borderWidth = 0
         label.layer.cornerRadius = 7
         label.layer.backgroundColor = cellType.tappedLabelColor()

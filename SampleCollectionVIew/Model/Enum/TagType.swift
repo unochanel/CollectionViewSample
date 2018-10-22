@@ -17,33 +17,44 @@ enum CellType: Int {
     func labelColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.cyan.cgColor
+            return SampleCollectionView.iceRed.cgColor
         case .negative:
-            return UIColor.orange.cgColor
+            return SampleCollectionView.iceBlue.cgColor
         default:
-            return UIColor.gray.cgColor
+            return SampleCollectionView.accentWhite.cgColor
         }
     }
     
     func borderColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.blue.cgColor
+            return SampleCollectionView.pinkKish.cgColor
         case .negative:
-            return UIColor.red.cgColor
+            return SampleCollectionView.softBlue.cgColor
         default:
-            return UIColor.black.cgColor
+            return SampleCollectionView.bluegray.cgColor
         }
     }
     
     func tappedLabelColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.blue.cgColor
+            return SampleCollectionView.pinkKish.cgColor
         case .negative:
-            return UIColor.red.cgColor
+            return SampleCollectionView.softBlue.cgColor
         default:
-            return UIColor.black.cgColor
+            return SampleCollectionView.bluegray.cgColor
+        }
+    }
+
+    func textColor() -> UIColor {
+        switch self {
+        case .positive:
+            return SampleCollectionView.pinkKish
+        case .negative:
+            return SampleCollectionView.softBlue
+        default:
+            return SampleCollectionView.bluegray
         }
     }
     

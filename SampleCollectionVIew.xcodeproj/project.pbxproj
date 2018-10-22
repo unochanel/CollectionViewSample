@@ -25,6 +25,7 @@
 		5C0F8BC52179E52A00BE2040 /* TagViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0F8BC32179E52A00BE2040 /* TagViewCell.xib */; };
 		5C0F8BCB217DA86B00BE2040 /* CreateManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BCA217DA86B00BE2040 /* CreateManeger.swift */; };
 		5C0F8BCE217DB00300BE2040 /* TappedButtonDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BCD217DB00300BE2040 /* TappedButtonDelegateProtocol.swift */; };
+		5C0F8BD0217DBC0300BE2040 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F8BCF217DBC0300BE2040 /* Color.swift */; };
 		5C7D9CE621771E3F0011C9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */; };
 		5C7D9CE821771E3F0011C9E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE721771E3F0011C9E5 /* ViewController.swift */; };
 		5C7D9CEB21771E3F0011C9E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9CE921771E3F0011C9E5 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		5C0F8BC32179E52A00BE2040 /* TagViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagViewCell.xib; sourceTree = "<group>"; };
 		5C0F8BCA217DA86B00BE2040 /* CreateManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateManeger.swift; sourceTree = "<group>"; };
 		5C0F8BCD217DB00300BE2040 /* TappedButtonDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappedButtonDelegateProtocol.swift; sourceTree = "<group>"; };
+		5C0F8BCF217DBC0300BE2040 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C7D9CE221771E3F0011C9E5 /* SampleCollectionVIew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleCollectionVIew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7D9CE521771E3F0011C9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7D9CE721771E3F0011C9E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				5C0F8BB72179AFA500BE2040 /* UITextField +Ex.swift */,
 				5C0F8BB92179B0AF00BE2040 /* UIView.Ex.swift */,
 				5C0F8BBB2179B0F800BE2040 /* Utility.swift */,
+				5C0F8BCF217DBC0300BE2040 /* Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				5C0F8BCB217DA86B00BE2040 /* CreateManeger.swift in Sources */,
 				5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */,
 				5C0F8BB62179AB1900BE2040 /* UIViewController+Ex.swift in Sources */,
+				5C0F8BD0217DBC0300BE2040 /* Color.swift in Sources */,
 				5C0F8BCE217DB00300BE2040 /* TappedButtonDelegateProtocol.swift in Sources */,
 				5C0F8BBF2179D08500BE2040 /* TagType.swift in Sources */,
 				5C0F8BA321788A4000BE2040 /* TagResponse.swift in Sources */,
