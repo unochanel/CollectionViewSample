@@ -36,7 +36,8 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
-        cell.configureCell(item: tagList[indexPath.row])
+        let cellType = switchCellType(cellType: tagList[indexPath.row].type)
+        cell.configureCell(cellType: cellType, text: tagList[indexPath.row].tag)
         return cell
     }
 }
@@ -45,11 +46,12 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         let tagList = self.tagList[indexPath.row]
-        if tagList.tag == "タグ作成" {
+        guard tagList.tag != "タグ作成" else {
             presentTextFieldAlertViewController()
+            return
         }
         
-        guard let cellType = CellType(rawValue: tagList.type) else { return }
+        let cellType = switchCellType(cellType: tagList.type)
         guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
             tappedTag.append(tagList.tag)
             cell.tappedTag(cellType: cellType)
@@ -105,7 +107,14 @@ extension ViewController {
     
     private func presentCreateTagViewController() {
         let viewController = CreateTagViewController.make()
-        print(self.tagtext)
-        present(viewController, animated: false)
+        present(viewController, animated: true)
+    }
+    
+    private func switchCellType(cellType: String) -> CellType {
+        switch cellType{
+        case "positive": return .positive
+        case "negative": return .negative
+        default: return .normal
+        }
     }
 }

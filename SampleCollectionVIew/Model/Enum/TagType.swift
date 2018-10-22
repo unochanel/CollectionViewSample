@@ -62,4 +62,15 @@ enum CellType: Int {
         case .negative: return "カラダやココロにとって悪いこと"
         }
     }
+
+    func setImage() -> UIImage {
+        switch self {
+        case .positive:
+            return R.image.positive()!
+        case .normal:
+            return R.image.normal()!
+        case .negative:
+            return R.image.negative()!
+        }
+    }
 }

@@ -13,9 +13,8 @@ final class Cell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
 
-    func configureCell(item: TagResponse.Tag) {
-        label.text = item.tag
-        guard let cellType = CellType(rawValue: item.type) else { return }
+    func configureCell(cellType: CellType, text: String) {
+        label.text = text
         configureLabelLayer(cellType: cellType)
     }
 

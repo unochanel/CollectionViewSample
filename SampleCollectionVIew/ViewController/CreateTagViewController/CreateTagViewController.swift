@@ -69,7 +69,6 @@ extension CreateTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
         cell.checkImageView.image = R.image.on()!
-        cell.selectionStyle = .none
         selectedType = CellType(rawValue: indexPath.row)
     }
 

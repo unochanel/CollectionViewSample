@@ -15,24 +15,17 @@ final class TagViewCell: UITableViewCell {
     @IBOutlet private weak var faceImage: UIImageView!
     @IBOutlet private weak var tagTypeLabel: UILabel!
     @IBOutlet private weak var explainTagTypeLabel: UILabel!
-    @IBOutlet private weak var separeteinsent: UIView!
+    @IBOutlet weak var separeteinsent: UIView!
     
     func configureCell(cellType: CellType) {
+        selectionStyle = .none
+        faceImage.image = cellType.setImage()
+        tagTypeLabel.text = cellType.toString()
+        explainTagTypeLabel.text = cellType.explain()
         switch cellType {
-        case .positive:
-            faceImage.image = R.image.positive()!
-            tagTypeLabel.text = "ポジティブ"
-            explainTagTypeLabel.text = "カラダやココロにとって良いこと"
-        case .normal:
+        case .normal, .negative:
             separeteinsent.isHidden = true
-            faceImage.image = R.image.normal()!
-            tagTypeLabel.text = "ノーマル"
-            explainTagTypeLabel.text = "どちらでもない"
-        case .negative:
-            separeteinsent.isHidden = true
-            faceImage.image = R.image.negative()!
-            tagTypeLabel.text = "ネガティブ"
-            explainTagTypeLabel.text = "カラダやココロにとって悪いこと"
+        default: return
         }
     }
 }
