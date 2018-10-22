@@ -9,9 +9,10 @@
 import UIKit
 
 final class CreateTagViewController: UIViewController {
-    static func make() -> CreateTagViewController {
+    static func make(text: String) -> CreateTagViewController {
         let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
+        viewController.tagTitle = text
         viewController.modalPresentationStyle = .overCurrentContext
         return viewController
     }
@@ -20,6 +21,7 @@ final class CreateTagViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var selectedType: CellType = .normal
+    private var tagTitle: String!
     private var index: Int!
     
     override func viewDidLoad() {
@@ -28,11 +30,12 @@ final class CreateTagViewController: UIViewController {
     }
     
     @IBAction private func registerButton(_ sender: Any) {
+        CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func backButton(_ sender: Any) {
-        print(selectedType)
+        //TODO: Alertを表示させる
         dismiss(animated: true, completion: nil)
     }
 }

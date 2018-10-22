@@ -8,8 +8,13 @@
 
 import UIKit
 
+struct TagList {
+    let type: String
+    let tag: String
+}
+
 final class ViewController: UIViewController {
-    private var tagList = [TagResponse.Tag]()
+    private var tagList = [TagList]()
     private var tappedTag = [String]()
     private var tagtext: String!
     
@@ -86,7 +91,8 @@ extension ViewController {
     private func getTagList() {
         TagRequest().getTag(handler: { [weak self] tagResponse in
             guard let weakSelf = self else { return }
-            weakSelf.tagList = tagResponse.tag
+            _ = tagResponse.tag.map { CreateManeger.shared.append(TagList(type: $0.type, tag: $0.tag)) }
+            weakSelf.tagList = CreateManeger.shared.all()
             weakSelf.collectionView.reloadData()
         })
     }
@@ -98,14 +104,15 @@ extension ViewController {
             fromViewController: self,
             completion: { text in
                 guard let text = text else { return }
+                guard text.count > 0 else { return }
                 self.tagtext = text
                 self.dismiss(animated: false)
-                self.presentCreateTagViewController()
+                self.presentCreateTagViewController(text: text)
         })
     }
     
-    private func presentCreateTagViewController() {
-        let viewController = CreateTagViewController.make()
+    private func presentCreateTagViewConrtroller(text: String) {
+        let viewController = CreateTagViewController.make(text: text)
         present(viewController, animated: true)
     }
     

@@ -73,4 +73,12 @@ enum CellType: Int {
             return R.image.negative()!
         }
     }
+
+    func toEnglish() -> String {
+        switch self {
+        case .positive: return "positive"
+        case .normal: return "normal"
+        case .negative: return "negative"
+        }
+    }
 }
