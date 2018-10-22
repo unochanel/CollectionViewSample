@@ -40,87 +40,28 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.image` struct is generated, and contains static references to 0 images.
   struct image {
-    /// Image `active`.
-    static let active = Rswift.ImageResource(bundle: R.hostingBundle, name: "active")
-    /// Image `clear`.
-    static let clear = Rswift.ImageResource(bundle: R.hostingBundle, name: "clear")
-    /// Image `negative`.
-    static let negative = Rswift.ImageResource(bundle: R.hostingBundle, name: "negative")
-    /// Image `normal`.
-    static let normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "normal")
-    /// Image `off`.
-    static let off = Rswift.ImageResource(bundle: R.hostingBundle, name: "off")
-    /// Image `on`.
-    static let on = Rswift.ImageResource(bundle: R.hostingBundle, name: "on")
-    /// Image `positive`.
-    static let positive = Rswift.ImageResource(bundle: R.hostingBundle, name: "positive")
-    
-    /// `UIImage(named: "active", bundle: ..., traitCollection: ...)`
-    static func active(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.active, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "clear", bundle: ..., traitCollection: ...)`
-    static func clear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.clear, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "negative", bundle: ..., traitCollection: ...)`
-    static func negative(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.negative, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "normal", bundle: ..., traitCollection: ...)`
-    static func normal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.normal, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "off", bundle: ..., traitCollection: ...)`
-    static func off(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.off, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "on", bundle: ..., traitCollection: ...)`
-    static func on(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.on, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "positive", bundle: ..., traitCollection: ...)`
-    static func positive(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.positive, compatibleWith: traitCollection)
-    }
-    
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
     /// Nib `Cell`.
     static let cell = _R.nib._Cell()
-    /// Nib `TagViewCell`.
-    static let tagViewCell = _R.nib._TagViewCell()
     
     /// `UINib(name: "Cell", in: bundle)`
     static func cell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.cell)
     }
     
-    /// `UINib(name: "TagViewCell", in: bundle)`
-    static func tagViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.tagViewCell)
-    }
-    
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `Cell`.
     static let cell: Rswift.ReuseIdentifier<Cell> = Rswift.ReuseIdentifier(identifier: "Cell")
-    /// Reuse identifier `TagViewCell`.
-    static let tagViewCell: Rswift.ReuseIdentifier<TagViewCell> = Rswift.ReuseIdentifier(identifier: "TagViewCell")
     
     fileprivate init() {}
   }
@@ -178,14 +119,9 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     try storyboard.validate()
-    try nib.validate()
   }
   
-  struct nib: Rswift.Validatable {
-    static func validate() throws {
-      try _TagViewCell.validate()
-    }
-    
+  struct nib {
     struct _Cell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
       typealias ReusableType = Cell
       
@@ -200,31 +136,11 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _TagViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
-      typealias ReusableType = TagViewCell
-      
-      let bundle = R.hostingBundle
-      let identifier = "TagViewCell"
-      let name = "TagViewCell"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> TagViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TagViewCell
-      }
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "positive", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'positive' is used in nib 'TagViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'off' is used in nib 'TagViewCell', but couldn't be loaded.") }
-      }
-      
-      fileprivate init() {}
-    }
-    
     fileprivate init() {}
   }
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
-      try main.validate()
       try createTagViewController.validate()
     }
     
@@ -240,8 +156,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "clear") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'clear' is used in storyboard 'CreateTagViewController', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "active") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'active' is used in storyboard 'CreateTagViewController', but couldn't be loaded.") }
         if _R.storyboard.createTagViewController().createTagViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'createTagViewController' could not be loaded from storyboard 'CreateTagViewController' as 'CreateTagViewController'.") }
       }
       
@@ -257,15 +171,11 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+    struct main: Rswift.StoryboardResourceWithInitialControllerType {
       typealias InitialController = ViewController
       
       let bundle = R.hostingBundle
       let name = "Main"
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "active") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'active' is used in storyboard 'Main', but couldn't be loaded.") }
-      }
       
       fileprivate init() {}
     }

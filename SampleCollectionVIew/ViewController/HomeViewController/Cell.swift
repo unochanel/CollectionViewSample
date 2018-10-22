@@ -8,6 +8,38 @@
 
 import UIKit
 
+enum CellType: String {
+    case positive
+    case negative
+
+    func labelColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.cyan.cgColor
+        case .negative:
+            return UIColor.orange.cgColor
+        }
+    }
+
+    func borderColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.blue.cgColor
+        case .negative:
+            return UIColor.red.cgColor
+        }
+    }
+    
+    func tappedLabelColor() -> CGColor {
+        switch self {
+        case .positive:
+            return UIColor.blue.cgColor
+        case .negative:
+            return UIColor.red.cgColor
+        }
+    }
+}
+
 final class Cell: UICollectionViewCell {
     static let reuseIdentifier = "Cell"
     

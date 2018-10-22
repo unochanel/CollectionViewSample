@@ -74,7 +74,7 @@ extension ViewController: TagCellLayoutDelegate {
 
 extension ViewController {
     private func configureCell() {
-        collectionView.register(UINib(nibName: Cell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
+        collectionView.register(UINib(nibName: "Cell", bundle: nil), forCellWithReuseIdentifier: Cell.reuseIdentifier)
     }
     
     private func configureCollctionView() {
@@ -106,6 +106,6 @@ extension ViewController {
     private func presentCreateTagViewController() {
         let viewController = CreateTagViewController.make()
         print(self.tagtext)
-        present(viewController, animated: false)
+        present(viewController, animated: true)
     }
 }
