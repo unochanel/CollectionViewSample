@@ -36,6 +36,8 @@
 		5C7D9D1B21774C630011C9E5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9D1921774C630011C9E5 /* Cell.swift */; };
 		5C7D9D1C21774C630011C9E5 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D9D1A21774C630011C9E5 /* Cell.xib */; };
 		5C863176217DD4BB00C0EE1A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C863175217DD4BB00C0EE1A /* AlertViewController.swift */; };
+		5C863178217DD52300C0EE1A /* UIView+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C863177217DD52300C0EE1A /* UIView+animation.swift */; };
+		5C86317A217DDA9A00C0EE1A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C863179217DDA9A00C0EE1A /* Functions.swift */; };
 		9F819E3FB1AC1846E42282BC /* Pods_SampleCollectionVIewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECBCE8924C12780C0BC6CFA /* Pods_SampleCollectionVIewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		5C7D9D1921774C630011C9E5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		5C7D9D1A21774C630011C9E5 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		5C863175217DD4BB00C0EE1A /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		5C863177217DD52300C0EE1A /* UIView+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+animation.swift"; sourceTree = "<group>"; };
+		5C863179217DDA9A00C0EE1A /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		79DD6ADD4702394C0D3E018D /* Pods_SampleCollectionVIew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleCollectionVIew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD7903052518B88F41A07F81 /* Pods-SampleCollectionVIew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleCollectionVIew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleCollectionVIew/Pods-SampleCollectionVIew.debug.xcconfig"; sourceTree = "<group>"; };
 		B3489C07676C5805B984BAC9 /* Pods-SampleCollectionVIewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleCollectionVIewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleCollectionVIewTests/Pods-SampleCollectionVIewTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 			children = (
 				5C0F8BCA217DA86B00BE2040 /* CreateManeger.swift */,
 				5C863175217DD4BB00C0EE1A /* AlertViewController.swift */,
+				5C863177217DD52300C0EE1A /* UIView+animation.swift */,
+				5C863179217DDA9A00C0EE1A /* Functions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -557,6 +563,8 @@
 				5C0F8B99217854D300BE2040 /* TagLayout.swift in Sources */,
 				5C0F8BCB217DA86B00BE2040 /* CreateManeger.swift in Sources */,
 				5C0F8BB82179AFA500BE2040 /* UITextField +Ex.swift in Sources */,
+				5C86317A217DDA9A00C0EE1A /* Functions.swift in Sources */,
+				5C863178217DD52300C0EE1A /* UIView+animation.swift in Sources */,
 				5C0F8BB62179AB1900BE2040 /* UIViewController+Ex.swift in Sources */,
 				5C0F8BD0217DBC0300BE2040 /* Color.swift in Sources */,
 				5C0F8BCE217DB00300BE2040 /* TappedButtonDelegateProtocol.swift in Sources */,

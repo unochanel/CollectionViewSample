@@ -18,7 +18,7 @@ final class CreateTagViewController: UIViewController {
         
         return viewController
     }
-    
+
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     private var tappedDelgate: TappedButtonDelegateProtocol?
@@ -26,16 +26,22 @@ final class CreateTagViewController: UIViewController {
     private var selectedType: CellType = .normal
     private var tagTitle: String!
     private var index: Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.fadeIn(type: 0.5)
     }
     
     @IBAction private func registerButton(_ sender: Any) {
         CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
         tappedDelgate?.tappedCreateButtonDelegateProtocol()
-        dismiss(animated: true, completion: nil)
+        mainView.fadeOut(type: 0.5)
+        dismissViewController()
     }
     
     @IBAction private func backButton(_ sender: Any) {
@@ -97,10 +103,18 @@ extension CreateTagViewController {
                 guard keep else {
                     CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle))
                     weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
-                    weakSelf.dismiss(animated: true, completion: nil)
+                    weakSelf.mainView.fadeOut(type: 0.5)
+                    weakSelf.dismissViewController()
                     return
                 }
-                weakSelf.dismiss(animated: true, completion: nil)
+                weakSelf.mainView.fadeOut(type: 0.5)
+                weakSelf.dismissViewController()
+        })
+    }
+
+    private func dismissViewController() {
+        delay(0.35, closure: {
+            self.dismiss(animated: false)
         })
     }
 }

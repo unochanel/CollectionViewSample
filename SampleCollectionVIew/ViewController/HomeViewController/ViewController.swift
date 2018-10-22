@@ -122,7 +122,7 @@ extension ViewController {
     
     private func presentCreateTagViewController(text: String) {
         let viewController = CreateTagViewController.make(text: text, delegate: self)
-        present(viewController, animated: true)
+        present(viewController, animated: false)
     }
     
     private func switchCellType(cellType: String) -> CellType {
