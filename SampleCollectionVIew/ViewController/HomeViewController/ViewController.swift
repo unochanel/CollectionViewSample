@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
     private var tappedTag = [String]()
     private var tagtext: String!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,14 +115,14 @@ extension ViewController {
                 guard let text = text else { return }
                 guard text.count > 0 else { return }
                 self.tagtext = text
-                self.dismiss(animated: false)
+                self.dismiss(animated: true)
                 self.presentCreateTagViewController(text: text)
         })
     }
     
     private func presentCreateTagViewController(text: String) {
         let viewController = CreateTagViewController.make(text: text, delegate: self)
-        present(viewController, animated: false)
+        present(viewController, animated: true)
     }
     
     private func switchCellType(cellType: String) -> CellType {

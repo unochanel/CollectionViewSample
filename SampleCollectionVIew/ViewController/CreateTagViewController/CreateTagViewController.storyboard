@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl1-NV-JAp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.5" alpha="0.60522795376712324" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAn-qI-SbT">
                                 <rect key="frame" x="38" y="142.5" width="299" height="382"/>
                                 <subviews>
@@ -84,21 +88,26 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.59698737157534243" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerY" secondItem="zqv-bS-UGd" secondAttribute="centerY" id="5UB-bk-Sf1"/>
+                            <constraint firstItem="Jl1-NV-JAp" firstAttribute="top" secondItem="zqv-bS-UGd" secondAttribute="top" id="BLG-Do-ys6"/>
+                            <constraint firstAttribute="trailing" secondItem="Jl1-NV-JAp" secondAttribute="trailing" id="XTZ-DC-TbN"/>
+                            <constraint firstAttribute="bottom" secondItem="Jl1-NV-JAp" secondAttribute="bottom" id="Yb1-E3-Drx"/>
+                            <constraint firstItem="Jl1-NV-JAp" firstAttribute="leading" secondItem="zqv-bS-UGd" secondAttribute="leading" id="cMC-QR-Hb2"/>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerX" secondItem="zqv-bS-UGd" secondAttribute="centerX" id="nbE-dW-rQw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ubf-XD-Y3Y"/>
                     </view>
                     <connections>
+                        <outlet property="background" destination="Jl1-NV-JAp" id="5bk-jU-3Jr"/>
                         <outlet property="mainView" destination="DAn-qI-SbT" id="SSz-d3-lCm"/>
                         <outlet property="tableView" destination="O7o-61-C6s" id="4XT-ij-Wls"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6m-gt-ALW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213.59999999999999" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-351" y="-143"/>
         </scene>
     </scenes>
     <resources>
