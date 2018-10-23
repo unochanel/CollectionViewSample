@@ -14,8 +14,8 @@ final class CreateTagViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
         viewController.tagTitle = text
         viewController.tappedDelgate = delegate
-        viewController.transitioningDelegate = viewController
         viewController.modalPresentationStyle = .overCurrentContext
+        viewController.transitioningDelegate = viewController
         return viewController
     }
     
@@ -46,7 +46,6 @@ final class CreateTagViewController: UIViewController {
 
 extension CreateTagViewController {
     private func configure() {
-        //        transitioningDelegate = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: TagViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: TagViewCell.reuseIdentifier)

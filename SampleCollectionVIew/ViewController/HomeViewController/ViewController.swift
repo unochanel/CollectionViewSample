@@ -51,7 +51,7 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         let tagList = self.tagList[indexPath.row]
-        guard tagList.tag != "タグ作成" else {
+        guard indexPath.row != 0 else {
             presentTextFieldAlertViewController()
             return
         }
