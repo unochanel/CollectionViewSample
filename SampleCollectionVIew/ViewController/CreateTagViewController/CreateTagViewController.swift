@@ -9,30 +9,43 @@
 import UIKit
 
 final class CreateTagViewController: UIViewController {
-    static func make() -> CreateTagViewController {
+    static func make(text: String, delegate: ViewController) -> CreateTagViewController {
         let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
+        viewController.tagTitle = text
+        viewController.tappedDelgate = delegate
         viewController.modalPresentationStyle = .overCurrentContext
+        
         return viewController
     }
-    
+
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    private var tappedDelgate: TappedButtonDelegateProtocol?
     
-    private var selectedType: CellType!
+    private var selectedType: CellType = .normal
+    private var tagTitle: String!
     private var index: Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.fadeIn(type: 0.5)
+    }
     
     @IBAction private func registerButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
+        tappedDelgate?.tappedCreateButtonDelegateProtocol()
+        mainView.fadeOut(type: 0.5)
+        dismissViewController()
     }
     
     @IBAction private func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        showActionSheetViewController()
     }
 }
 
@@ -46,7 +59,7 @@ extension CreateTagViewController {
 
 extension CreateTagViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CellType.negative.index + 1
+        return CellType.negative.rawValue + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,14 +78,43 @@ extension CreateTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 81
     }
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
-        switch indexPath.row {
-        case 0:  selectedType = .positive
-        case 1:  selectedType = .normal
-        case 2:  selectedType = .negative
-        default:  return
-        }
+        cell.checkImageView.image = R.image.on()!
+        selectedType = CellType(rawValue: indexPath.row) ?? .normal
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TagViewCell
+        cell.checkImageView.image = R.image.off()!
+    }
+}
+
+extension CreateTagViewController {
+    private func showActionSheetViewController() {
+        AlertController.shared.showActionTwoSection(
+            title: "編集内容を破棄しますか？",
+            defaultTitle: "破棄",
+            otherTitle: "内容を保存する",
+            fromViewController: self,
+            completion: { [weak self] keep in
+                guard let weakSelf = self else { return }
+                guard keep else {
+                    CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle))
+                    weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
+                    weakSelf.mainView.fadeOut(type: 0.5)
+                    weakSelf.dismissViewController()
+                    return
+                }
+                weakSelf.mainView.fadeOut(type: 0.5)
+                weakSelf.dismissViewController()
+        })
+    }
+
+    private func dismissViewController() {
+        delay(0.5, closure: {
+            self.dismiss(animated: false)
+        })
     }
 }

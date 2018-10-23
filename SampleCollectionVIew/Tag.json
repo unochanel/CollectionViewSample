@@ -2,7 +2,7 @@
     "tag":
     [
         {
-            "type": "negative",
+            "type": "normal",
             "tag": "タグ作成"
         },
         {
@@ -14,7 +14,7 @@
             "tag": "🍖食事"
         },
         {
-            "type": "negative",
+            "type": "normal",
             "tag": "😝残業"
         },
         {

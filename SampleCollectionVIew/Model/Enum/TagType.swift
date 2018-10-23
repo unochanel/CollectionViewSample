@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CellType: String {
+enum CellType: Int {
     case positive
     case normal
     case negative
@@ -17,41 +17,79 @@ enum CellType: String {
     func labelColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.cyan.cgColor
+            return SampleCollectionView.iceRed.cgColor
         case .negative:
-            return UIColor.orange.cgColor
+            return SampleCollectionView.iceBlue.cgColor
         default:
-            return UIColor.gray.cgColor
+            return SampleCollectionView.accentWhite.cgColor
         }
     }
     
     func borderColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.blue.cgColor
+            return SampleCollectionView.pinkKish.cgColor
         case .negative:
-            return UIColor.red.cgColor
+            return SampleCollectionView.softBlue.cgColor
         default:
-            return UIColor.black.cgColor
+            return SampleCollectionView.bluegray.cgColor
         }
     }
     
     func tappedLabelColor() -> CGColor {
         switch self {
         case .positive:
-            return UIColor.blue.cgColor
+            return SampleCollectionView.pinkKish.cgColor
         case .negative:
-            return UIColor.red.cgColor
+            return SampleCollectionView.softBlue.cgColor
         default:
-            return UIColor.black.cgColor
+            return SampleCollectionView.bluegray.cgColor
         }
     }
 
-    var index: Int {
+    func textColor() -> UIColor {
         switch self {
-        case .positive: return 0
-        case .normal: return 1
-        case .negative: return 2
+        case .positive:
+            return SampleCollectionView.pinkKish
+        case .negative:
+            return SampleCollectionView.softBlue
+        default:
+            return SampleCollectionView.bluegray
+        }
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .positive: return "ポジティブ"
+        case .normal: return "ノーマル"
+        case .negative: return "ネガティブ"
+        }
+    }
+    
+    func explain() -> String {
+        switch self {
+        case .positive: return "カラダやココロにとって良いこと"
+        case .normal: return "どちらでもない"
+        case .negative: return "カラダやココロにとって悪いこと"
+        }
+    }
+
+    func setImage() -> UIImage {
+        switch self {
+        case .positive:
+            return R.image.positive()!
+        case .normal:
+            return R.image.normal()!
+        case .negative:
+            return R.image.negative()!
+        }
+    }
+
+    func toEnglish() -> String {
+        switch self {
+        case .positive: return "positive"
+        case .normal: return "normal"
+        case .negative: return "negative"
         }
     }
 }

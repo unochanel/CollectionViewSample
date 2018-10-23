@@ -13,20 +13,22 @@ final class Cell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
 
-    func configureCell(item: TagResponse.Tag) {
-        label.text = item.tag
-        guard let cellType = CellType(rawValue: item.type) else { return }
+    func configureCell(cellType: CellType, text: String) {
+        label.text = text
         configureLabelLayer(cellType: cellType)
     }
 
+    
     func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
-        label.layer.borderWidth = 2
-        label.layer.cornerRadius = 7
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 4
         label.layer.backgroundColor = cellType.labelColor()
+        label.textColor = cellType.textColor()
     }
 
     func tappedTag(cellType: CellType) {
+        label.textColor = UIColor.white
         label.layer.borderWidth = 0
         label.layer.cornerRadius = 7
         label.layer.backgroundColor = cellType.tappedLabelColor()

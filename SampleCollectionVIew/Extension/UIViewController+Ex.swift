@@ -33,30 +33,3 @@ extension UIViewController {
         present(alertController, animated: true)
     }
 }
-
-public final class AlertController {
-    public static let shared = AlertController()
-    private init() {}
-    
-    public func showAddTextFieldAlertViewController(
-        title: String? = nil,
-        message: String? = nil,
-        okSelectionTitle: String? = "OK",
-        cancelSelectionTitle: String? = "Cancel",
-        fromViewController: UIViewController,
-        completion: ((String?) -> Void)?) {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addTextField { (textField: UITextField!) -> Void in
-            textField.keyboardType = .namePhonePad
-            textField.checkCount(max: 10)
-        }
-        alertController.addAction(UIAlertAction(title: okSelectionTitle, style: .default, handler: {(_: UIAlertAction) -> Void in
-            completion?(alertController.textFields?[0].text)
-        }))
-        alertController.addAction(UIAlertAction(title: cancelSelectionTitle, style: .cancel, handler:  {(_: UIAlertAction) -> Void in
-            completion?(nil)
-        }))
-        fromViewController.present(alertController, animated: true)
-    }
-}

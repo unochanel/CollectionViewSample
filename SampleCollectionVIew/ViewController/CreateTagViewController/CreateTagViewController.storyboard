@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAn-qI-SbT">
                                 <rect key="frame" x="38" y="142.5" width="299" height="382"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O7o-61-C6s">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O7o-61-C6s">
                                         <rect key="frame" x="0.0" y="61.5" width="299" height="243"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -77,9 +77,14 @@
                                     <constraint firstItem="O7o-61-C6s" firstAttribute="centerX" secondItem="DAn-qI-SbT" secondAttribute="centerX" id="tIH-FR-oW6"/>
                                     <constraint firstItem="9yi-OK-u5O" firstAttribute="centerX" secondItem="DAn-qI-SbT" secondAttribute="centerX" id="tMj-BM-nDJ"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.38872612847222221" alpha="0.59698737157534243" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerY" secondItem="zqv-bS-UGd" secondAttribute="centerY" id="5UB-bk-Sf1"/>
                             <constraint firstItem="DAn-qI-SbT" firstAttribute="centerX" secondItem="zqv-bS-UGd" secondAttribute="centerX" id="nbE-dW-rQw"/>
