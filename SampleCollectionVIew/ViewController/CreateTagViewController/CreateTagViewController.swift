@@ -14,33 +14,28 @@ final class CreateTagViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
         viewController.tagTitle = text
         viewController.tappedDelgate = delegate
+        viewController.transitioningDelegate = viewController
         viewController.modalPresentationStyle = .overCurrentContext
-        
         return viewController
     }
-
-    @IBOutlet private weak var mainView: UIView!
+    
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var background: UIView!
     private var tappedDelgate: TappedButtonDelegateProtocol?
     
     private var selectedType: CellType = .normal
     private var tagTitle: String!
     private var index: Int!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mainView.fadeIn(type: 0.5)
-    }
     
-    @IBAction private func registerButton(_ sender: Any) {
+    @IBAction private func registerButton(_ asender: Any) {
         CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
         tappedDelgate?.tappedCreateButtonDelegateProtocol()
-        mainView.fadeOut(type: 0.5)
         dismissViewController()
     }
     
@@ -51,6 +46,7 @@ final class CreateTagViewController: UIViewController {
 
 extension CreateTagViewController {
     private func configure() {
+        //        transitioningDelegate = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: TagViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: TagViewCell.reuseIdentifier)
@@ -91,6 +87,16 @@ extension CreateTagViewController: UITableViewDelegate {
     }
 }
 
+extension CreateTagViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return OverlayTransitionPresent()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return OverlayTransitionDismiss()
+    }
+}
+
 extension CreateTagViewController {
     private func showActionSheetViewController() {
         AlertController.shared.showActionTwoSection(
@@ -103,18 +109,14 @@ extension CreateTagViewController {
                 guard keep else {
                     CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle))
                     weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
-                    weakSelf.mainView.fadeOut(type: 0.5)
                     weakSelf.dismissViewController()
                     return
                 }
-                weakSelf.mainView.fadeOut(type: 0.5)
                 weakSelf.dismissViewController()
         })
     }
-
+    
     private func dismissViewController() {
-        delay(0.5, closure: {
-            self.dismiss(animated: false)
-        })
+        self.dismiss(animated: true)
     }
 }

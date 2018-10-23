@@ -23,7 +23,7 @@ final class TagViewCell: UITableViewCell {
         tagTypeLabel.text = cellType.toString()
         explainTagTypeLabel.text = cellType.explain()
         switch cellType {
-        case .normal, .negative:
+        case .normal:
             separeteinsent.isHidden = true
         default: return
         }
