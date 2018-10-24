@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct TagList {
+    let type: String
+    let tag: String
+    var date: Date
+}
+
 final class CreateManeger {
     private init() {}
 
@@ -20,6 +26,7 @@ final class CreateManeger {
     }
 
     func all() -> [TagList] {
+        creates.sort(by: { $0.date < $1.date })
         return creates
     }
 }

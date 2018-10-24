@@ -18,10 +18,12 @@ struct TagResponse: Decodable {
     struct Tag: Decodable {
         let type: String
         let tag: String
+        let date: Date?
         
         enum CodingKeys: String, CodingKey {
             case type
             case tag
+            case date
         }
     }
 }

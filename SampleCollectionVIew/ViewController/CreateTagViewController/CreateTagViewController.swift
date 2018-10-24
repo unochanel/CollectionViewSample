@@ -34,7 +34,7 @@ final class CreateTagViewController: UIViewController {
     }
     
     @IBAction private func registerButton(_ asender: Any) {
-        CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle))
+        CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle, date: Date()))
         tappedDelgate?.tappedCreateButtonDelegateProtocol()
         dismissViewController()
     }
@@ -106,7 +106,7 @@ extension CreateTagViewController {
             completion: { [weak self] keep in
                 guard let weakSelf = self else { return }
                 guard keep else {
-                    CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle))
+                    CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle, date: Date()))
                     weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
                     weakSelf.dismissViewController()
                     return

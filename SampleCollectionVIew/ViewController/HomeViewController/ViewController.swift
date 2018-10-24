@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct TagList {
-    let type: String
-    let tag: String
-}
-
 final class ViewController: UIViewController {
     private var tagList = [TagList]()
     private var tappedTag = [String]()
@@ -32,6 +27,9 @@ final class ViewController: UIViewController {
         configureCell()
         configureCollctionView()
     }
+    @IBAction func registerTagButton(_ sender: Any) {
+        print(tappedTag)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -40,9 +38,14 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //一度タップされているかで、色を変えている。
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         let cellType = switchCellType(cellType: tagList[indexPath.row].type)
-        cell.configureCell(cellType: cellType, text: tagList[indexPath.row].tag)
+        guard tappedTag.contains(tagList[indexPath.row].type) else {
+            cell.configureCell(cellType: cellType, text: tagList[indexPath.row].tag)
+            return cell
+        }
+        cell.tappedTag(cellType: cellType)
         return cell
     }
 }
@@ -50,15 +53,18 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
-        let tagList = self.tagList[indexPath.row]
+        var tagList = self.tagList[indexPath.row]
+        //メモを作成が押された場合の処理をしている
         guard indexPath.row != 0 else {
             presentTextFieldAlertViewController()
             return
         }
         
         let cellType = switchCellType(cellType: tagList.type)
+        //タップされているかさされていないかを見ている。
         guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
             tappedTag.append(tagList.tag)
+            tagList.date = Date()
             cell.tappedTag(cellType: cellType)
             return
         }
@@ -100,7 +106,7 @@ extension ViewController {
     private func getTagList() {
         TagRequest().getTag(handler: { [weak self] tagResponse in
             guard let weakSelf = self else { return }
-            _ = tagResponse.tag.map { CreateManeger.shared.append(TagList(type: $0.type, tag: $0.tag)) }
+            _ = tagResponse.tag.map { CreateManeger.shared.append(TagList(type: $0.type, tag: $0.tag, date: $0.date ?? Date())) }
             weakSelf.tagList = CreateManeger.shared.all()
             weakSelf.collectionView.reloadData()
         })
