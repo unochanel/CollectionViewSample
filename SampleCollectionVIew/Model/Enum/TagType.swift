@@ -92,4 +92,12 @@ enum CellType: Int {
         case .negative: return "negative"
         }
     }
+
+    static func switchCellType(cellType: String) -> CellType {
+        switch cellType{
+        case "positive": return .positive
+        case "negative": return .negative
+        default: return .normal
+        }
+    }
 }
