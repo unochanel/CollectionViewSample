@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct TagList {
+    let type: String
+    let tag: String
+    var tapped: Bool
+}
+
 final class CreateManeger {
     private init() {}
 
@@ -17,6 +23,18 @@ final class CreateManeger {
 
     func append(_ create: TagList) {
         creates.append(create)
+    }
+
+    func createTag(tagList: TagList) {
+        creates.insert(tagList, at: 1)
+    }
+
+    func tapped(index: Int) {
+        if creates[index].tapped == true {
+            creates[index].tapped = false
+        } else {
+            creates[index].tapped = true
+        }
     }
 
     func all() -> [TagList] {

@@ -15,7 +15,7 @@ final class TagViewCell: UITableViewCell {
     @IBOutlet private weak var faceImage: UIImageView!
     @IBOutlet private weak var tagTypeLabel: UILabel!
     @IBOutlet private weak var explainTagTypeLabel: UILabel!
-    @IBOutlet weak var separeteinsent: UIView!
+    @IBOutlet private weak var separeteinsent: UIView!
     
     func configureCell(cellType: CellType) {
         selectionStyle = .none
@@ -25,6 +25,7 @@ final class TagViewCell: UITableViewCell {
         switch cellType {
         case .normal:
             separeteinsent.isHidden = true
+            checkImageView.image = R.image.on()!
         default: return
         }
     }

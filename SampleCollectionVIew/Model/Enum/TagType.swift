@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CellType: Int {
+enum CellType: Int, CaseIterable {
     case positive
     case normal
     case negative
@@ -90,6 +90,14 @@ enum CellType: Int {
         case .positive: return "positive"
         case .normal: return "normal"
         case .negative: return "negative"
+        }
+    }
+
+    static func switchCellType(cellType: String) -> CellType {
+        switch cellType{
+        case "positive": return .positive
+        case "negative": return .negative
+        default: return .normal
         }
     }
 }
