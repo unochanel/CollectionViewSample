@@ -23,16 +23,20 @@ final class CreateTagViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var background: UIView!
     private var tappedDelgate: TappedButtonDelegateProtocol?
-    
+
     private var selectedType: CellType = .normal
     private var tagTitle: String!
-    private var index: Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.selectRow(at: IndexPath(row: 1, section: 0), animated: false, scrollPosition: .none)
+    }
+
     @IBAction private func registerButton(_ asender: Any) {
         saveTagList()
         self.dismiss(animated: true)
@@ -58,7 +62,7 @@ extension CreateTagViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TagViewCell.reuseIdentifier, for: indexPath) as! TagViewCell
-        cell.configureCell(cellType: CellType(rawValue: indexPath.row)!, selectedCell: selectedType)
+        cell.configureCell(cellType: CellType(rawValue: indexPath.row)!)
         return cell
     }
 }
