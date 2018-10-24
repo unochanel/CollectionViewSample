@@ -11,7 +11,8 @@ import Foundation
 struct TagList {
     let type: String
     let tag: String
-    var date: Date
+    var tappedDate: Date
+    var tapped: Bool
 }
 
 final class CreateManeger {
@@ -25,8 +26,17 @@ final class CreateManeger {
         creates.append(create)
     }
 
+    func tapped(index: Int) {
+        guard creates[index].tapped else {
+            creates[index].tapped = true
+            creates[index].tappedDate = Date()
+            return
+        }
+        creates[index].tapped = false
+    }
+
     func all() -> [TagList] {
-        creates.sort(by: { $0.date < $1.date })
+        creates.sort(by: { $0.tappedDate < $1.tappedDate })
         return creates
     }
 }

@@ -53,23 +53,21 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
-        var tagList = self.tagList[indexPath.row]
+        let createingTag = CreateManeger.shared.all()[indexPath.row]
         //メモを作成が押された場合の処理をしている
         guard indexPath.row != 0 else {
             presentTextFieldAlertViewController()
             return
         }
         
-        let cellType = switchCellType(cellType: tagList.type)
-        //タップされているかさされていないかを見ている。
-        guard let deleteTagIndex = tappedTag.index(of: tagList.tag) else {
-            tappedTag.append(tagList.tag)
-            tagList.date = Date()
+        let cellType = switchCellType(cellType: createingTag.type)
+        guard createingTag.tapped else {
+            CreateManeger.shared.tapped(index: indexPath.row)
             cell.tappedTag(cellType: cellType)
             return
         }
         cell.configureLabelLayer(cellType: cellType)
-        tappedTag.remove(at: deleteTagIndex)
+        CreateManeger.shared.tapped(index: indexPath.row)
     }
 }
 
@@ -86,7 +84,6 @@ extension ViewController: TagCellLayoutDelegate {
 
 extension ViewController: TappedButtonDelegateProtocol {
     func tappedCreateButtonDelegateProtocol() {
-        tagList.removeAll()
         tagList = CreateManeger.shared.all()
         collectionView.reloadData()
     }
@@ -106,7 +103,13 @@ extension ViewController {
     private func getTagList() {
         TagRequest().getTag(handler: { [weak self] tagResponse in
             guard let weakSelf = self else { return }
-            _ = tagResponse.tag.map { CreateManeger.shared.append(TagList(type: $0.type, tag: $0.tag, date: $0.date ?? Date())) }
+            _ = tagResponse.tag.map { tag in
+                let createingTag = TagList(type: tag.type,
+                                      tag: tag.tag,
+                                      tappedDate: tag.date ?? Date(),
+                                      tapped: false)
+                CreateManeger.shared.append(createingTag)
+            }
             weakSelf.tagList = CreateManeger.shared.all()
             weakSelf.collectionView.reloadData()
         })
