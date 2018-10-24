@@ -25,6 +25,7 @@ final class ViewController: UIViewController {
         configureCell()
         configureCollctionView()
     }
+
     @IBAction func registerTagButton(_ sender: Any) {
         print(CreateManeger.shared.all().filter { $0.tapped == true}.map { $0.tag })
     }
@@ -38,13 +39,7 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         let creatingTag = CreateManeger.shared.all()[indexPath.row]
-
-        let cellType = switchCellType(cellType: creatingTag.type)
-        guard creatingTag.tapped else {
-            cell.configureCell(cellType: cellType, text: creatingTag.tag)
-            return cell
-        }
-        cell.tappedTag(cellType: cellType)
+        cell.configureCell(creatingTag: creatingTag)
         return cell
     }
 }
@@ -52,28 +47,18 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)  {
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
-        let createingTag = CreateManeger.shared.all()[indexPath.row]
-        //メモを作成が押された場合の処理をしている
         guard indexPath.row != 0 else {
             presentTextFieldAlertViewController()
             return
         }
-        
-        let cellType = switchCellType(cellType: createingTag.type)
-        guard createingTag.tapped else {
-            CreateManeger.shared.tapped(index: indexPath.row)
-            cell.tappedTag(cellType: cellType)
-            return
-        }
-        cell.configureLabelLayer(cellType: cellType)
         CreateManeger.shared.tapped(index: indexPath.row)
+        cell.configureCell(creatingTag: CreateManeger.shared.all()[indexPath.row])
     }
 }
 
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
         let tagList = CreateManeger.shared.all()
-        //TODO:もっと綺麗にCellの大きさを決めれそう
         let label = UILabel()
         label.text = tagList[index].tag
         label.sizeToFit()
@@ -103,9 +88,7 @@ extension ViewController {
         TagRequest().getTag(handler: { [weak self] tagResponse in
             guard let weakSelf = self else { return }
             _ = tagResponse.tag.map { tag in
-                let createingTag = TagList(type: tag.type,
-                                      tag: tag.tag,
-                                      tapped: false)
+                let createingTag = TagList(type: tag.type, tag: tag.tag, tapped: false)
                 CreateManeger.shared.append(createingTag)
             }
             weakSelf.collectionView.reloadData()
@@ -121,7 +104,6 @@ extension ViewController {
                 guard let text = text else { return }
                 guard text.count > 0 else { return }
                 self.tagtext = text
-                self.dismiss(animated: true)
                 self.presentCreateTagViewController(text: text)
         })
     }
@@ -129,13 +111,5 @@ extension ViewController {
     private func presentCreateTagViewController(text: String) {
         let viewController = CreateTagViewController.make(text: text, delegate: self)
         present(viewController, animated: true)
-    }
-    
-    private func switchCellType(cellType: String) -> CellType {
-        switch cellType{
-        case "positive": return .positive
-        case "negative": return .negative
-        default: return .normal
-        }
     }
 }

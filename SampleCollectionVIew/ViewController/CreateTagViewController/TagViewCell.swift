@@ -17,7 +17,7 @@ final class TagViewCell: UITableViewCell {
     @IBOutlet private weak var explainTagTypeLabel: UILabel!
     @IBOutlet weak var separeteinsent: UIView!
     
-    func configureCell(cellType: CellType) {
+    func configureCell(cellType: CellType, selectedCell: CellType) {
         selectionStyle = .none
         faceImage.image = cellType.setImage()
         tagTypeLabel.text = cellType.toString()

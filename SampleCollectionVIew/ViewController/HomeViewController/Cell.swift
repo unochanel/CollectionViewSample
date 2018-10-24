@@ -13,13 +13,17 @@ final class Cell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
 
-    func configureCell(cellType: CellType, text: String) {
-        label.text = text
-        configureLabelLayer(cellType: cellType)
+    func configureCell(creatingTag: TagList) {
+        label.text = creatingTag.tag
+        let cellType = CellType.switchCellType(cellType: creatingTag.type)
+        if creatingTag.tapped == true {
+            tappedTag(cellType: cellType)
+        } else {
+            configureLabelLayer(cellType: cellType)
+        }
     }
 
-    
-    func configureLabelLayer(cellType: CellType) {
+    private func configureLabelLayer(cellType: CellType) {
         label.layer.borderColor = cellType.borderColor()
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 4
@@ -27,7 +31,7 @@ final class Cell: UICollectionViewCell {
         label.textColor = cellType.textColor()
     }
 
-    func tappedTag(cellType: CellType) {
+    private func tappedTag(cellType: CellType) {
         label.textColor = UIColor.white
         label.layer.borderWidth = 0
         label.layer.cornerRadius = 7

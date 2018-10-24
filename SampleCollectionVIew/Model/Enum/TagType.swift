@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CellType: Int {
+enum CellType: Int, CaseIterable {
     case positive
     case normal
     case negative

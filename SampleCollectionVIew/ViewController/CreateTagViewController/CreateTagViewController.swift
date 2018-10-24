@@ -9,7 +9,7 @@
 import UIKit
 
 final class CreateTagViewController: UIViewController {
-    static func make(text: String, delegate: ViewController) -> CreateTagViewController {
+    static func make(text: String, delegate: TappedButtonDelegateProtocol?) -> CreateTagViewController {
         let storyboard = UIStoryboard(name: "CreateTagViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CreateTagViewController") as! CreateTagViewController
         viewController.tagTitle = text
@@ -34,9 +34,8 @@ final class CreateTagViewController: UIViewController {
     }
     
     @IBAction private func registerButton(_ asender: Any) {
-        CreateManeger.shared.append(TagList.init(type: selectedType.toEnglish(), tag: tagTitle, tapped: true))
-        tappedDelgate?.tappedCreateButtonDelegateProtocol()
-        dismissViewController()
+        saveTagList()
+        self.dismiss(animated: true)
     }
     
     @IBAction private func backButton(_ sender: Any) {
@@ -59,12 +58,7 @@ extension CreateTagViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TagViewCell.reuseIdentifier, for: indexPath) as! TagViewCell
-        switch indexPath.row {
-        case 0:  cell.configureCell(cellType: .positive)
-        case 1:  cell.configureCell(cellType: .normal)
-        case 2:  cell.configureCell(cellType: .negative)
-        default: return cell
-        }
+        cell.configureCell(cellType: CellType(rawValue: indexPath.row)!, selectedCell: selectedType)
         return cell
     }
 }
@@ -98,24 +92,18 @@ extension CreateTagViewController: UIViewControllerTransitioningDelegate {
 
 extension CreateTagViewController {
     private func showActionSheetViewController() {
-        AlertController.shared.showActionTwoSection(
-            title: "編集内容を破棄しますか？",
-            defaultTitle: "破棄",
-            otherTitle: "内容を保存する",
-            fromViewController: self,
-            completion: { [weak self] keep in
-                guard let weakSelf = self else { return }
-                guard keep else {
-                    CreateManeger.shared.append(TagList.init(type: weakSelf.selectedType.toEnglish(), tag: weakSelf.tagTitle, tapped: true))
-                    weakSelf.tappedDelgate?.tappedCreateButtonDelegateProtocol()
-                    weakSelf.dismissViewController()
-                    return
-                }
-                weakSelf.dismissViewController()
+        AlertController.shared.showActionTwoSection(title: "編集内容を破棄しますか？", defaultTitle: "破棄",  otherTitle: "内容を保存する", fromViewController: self, completion: { [weak self] no in
+            guard let weakSelf = self else { return }
+            if no == false {
+                weakSelf.saveTagList()
+            }
+            weakSelf.dismiss(animated: true)
         })
     }
     
-    private func dismissViewController() {
-        self.dismiss(animated: true)
+    private func saveTagList() {
+        let tagList = TagList.init(type: selectedType.toEnglish(), tag: tagTitle, tapped: true)
+        CreateManeger.shared.createTag(tagList: tagList)
+        tappedDelgate?.tappedCreateButtonDelegateProtocol()
     }
 }
