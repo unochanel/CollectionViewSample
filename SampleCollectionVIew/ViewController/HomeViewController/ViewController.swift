@@ -9,8 +9,6 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    private var tagList = [TagList]()
-    private var tappedTag = [String]()
     private var tagtext: String!
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -28,21 +26,22 @@ final class ViewController: UIViewController {
         configureCollctionView()
     }
     @IBAction func registerTagButton(_ sender: Any) {
-        print(tappedTag)
+        print(CreateManeger.shared.all().map{ $0.tapped == true})
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagList.count
+        return CreateManeger.shared.all().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //一度タップされているかで、色を変えている。
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
-        let cellType = switchCellType(cellType: tagList[indexPath.row].type)
-        guard tappedTag.contains(tagList[indexPath.row].type) else {
-            cell.configureCell(cellType: cellType, text: tagList[indexPath.row].tag)
+        let creatingTag = CreateManeger.shared.all()[indexPath.row]
+
+        let cellType = switchCellType(cellType: creatingTag.type)
+        guard creatingTag.tapped else {
+            cell.configureCell(cellType: cellType, text: creatingTag.tag)
             return cell
         }
         cell.tappedTag(cellType: cellType)
@@ -73,6 +72,7 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: TagCellLayoutDelegate {
     func tagCellLayoutTagSize(layout: TagCellLayout, atIndex index: Int) -> CGSize {
+        let tagList = CreateManeger.shared.all()
         //TODO:もっと綺麗にCellの大きさを決めれそう
         let label = UILabel()
         label.text = tagList[index].tag
@@ -84,7 +84,6 @@ extension ViewController: TagCellLayoutDelegate {
 
 extension ViewController: TappedButtonDelegateProtocol {
     func tappedCreateButtonDelegateProtocol() {
-        tagList = CreateManeger.shared.all()
         collectionView.reloadData()
     }
 }
@@ -106,11 +105,9 @@ extension ViewController {
             _ = tagResponse.tag.map { tag in
                 let createingTag = TagList(type: tag.type,
                                       tag: tag.tag,
-                                      tappedDate: tag.date ?? Date(),
                                       tapped: false)
                 CreateManeger.shared.append(createingTag)
             }
-            weakSelf.tagList = CreateManeger.shared.all()
             weakSelf.collectionView.reloadData()
         })
     }
