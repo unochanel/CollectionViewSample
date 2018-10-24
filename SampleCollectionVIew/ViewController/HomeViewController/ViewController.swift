@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
         configureCollctionView()
     }
     @IBAction func registerTagButton(_ sender: Any) {
-        print(CreateManeger.shared.all().map{ $0.tapped == true})
+        print(CreateManeger.shared.all().filter { $0.tapped == true}.map { $0.tag })
     }
 }
 
