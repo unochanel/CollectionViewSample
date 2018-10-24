@@ -25,12 +25,16 @@ final class CreateManeger {
         creates.append(create)
     }
 
+    func createTag(tagList: TagList) {
+        creates.insert(tagList, at: 1)
+    }
+
     func tapped(index: Int) {
-        guard creates[index].tapped else {
+        if creates[index].tapped == true {
+            creates[index].tapped = false
+        } else {
             creates[index].tapped = true
-            return
         }
-        creates[index].tapped = false
     }
 
     func all() -> [TagList] {
